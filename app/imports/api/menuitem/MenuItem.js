@@ -15,7 +15,7 @@ class MenuItemCollection {
     this.schema = new SimpleSchema({
       name: String,
       image: String,
-      provider: String,
+      vendor: String,
       price: Number,
       ingredients: String,
       owner: String,
