@@ -1,6 +1,7 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Roles } from 'meteor/alanning:roles';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 class StuffItemAdmin extends React.Component {
@@ -8,9 +9,10 @@ class StuffItemAdmin extends React.Component {
     return (
       <Table.Row>
         <Table.Cell>{this.props.stuff.name}</Table.Cell>
-        <Table.Cell>{this.props.stuff.quantity}</Table.Cell>
-        <Table.Cell>{this.props.stuff.condition}</Table.Cell>
         <Table.Cell>{this.props.stuff.owner}</Table.Cell>
+        <Table.Cell>
+          <Button icon onClick={ () => Roles.addUsersToRoles(this.props.stuff._id, 'vendor') }><Icon name='add'/></Button>
+        </Table.Cell>
       </Table.Row>
     );
   }

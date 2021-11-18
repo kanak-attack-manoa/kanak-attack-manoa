@@ -17,27 +17,26 @@ class HomeAdmin extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Container>
+      <Container style={ { padding: '10px 0px 0px 0px' } } >
         <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
 
           <Grid.Column width={4}>
-            <Icon size='huge' name='address book'/>
+            <Icon inverted size='massive' name='address book'/>
           </Grid.Column>
 
           <Grid.Column width={8}>
-            <h1>Welcome to Admin</h1>
-            <p>As administrator, you can handle user profiles and define users as having the vendor role</p>
+            <h1 style={ { padding: '10px 0px 0px 0px', color: 'white', fontSize: '30px' }}>Welcome to Admin</h1>
+            <h4 inverted style={{ color: 'white'}}>As administrator, you can handle user profiles and define users as having the vendor role</h4>
           </Grid.Column>
 
         </Grid>
-        <Header as="h2" textAlign="center">Manage Accounts</Header>
+        <Header as="h2" textAlign="center" inverted>Manage Accounts</Header>
         <Table celled>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Quantity</Table.HeaderCell>
-              <Table.HeaderCell>Condition</Table.HeaderCell>
-              <Table.HeaderCell>Owner</Table.HeaderCell>
+              <Table.HeaderCell>Email</Table.HeaderCell>
+              <Table.HeaderCell>Add as Vendor</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
