@@ -26,7 +26,7 @@ class HomeAdmin extends React.Component {
 
           <Grid.Column width={8}>
             <h1 style={ { padding: '10px 0px 0px 0px', color: 'white', fontSize: '30px' }}>Welcome to Admin</h1>
-            <h4 inverted style={{ color: 'white'}}>As administrator, you can handle user profiles and define users as having the vendor role</h4>
+            <h4 inverted style={{ color: 'white' }}>As administrator, you can handle user profiles and define users as having the vendor role</h4>
           </Grid.Column>
 
         </Grid>
