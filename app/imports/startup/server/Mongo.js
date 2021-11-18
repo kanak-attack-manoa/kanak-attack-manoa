@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Vendors } from '../../api/vendor/Vendor';
 import { MenuItems } from '../../api/menuitem/MenuItems.js';
 
 /* eslint-disable no-console */
@@ -8,6 +9,12 @@ import { MenuItems } from '../../api/menuitem/MenuItems.js';
 function addData(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Stuffs.collection.insert(data);
+}
+
+// Initialize the database with a default data document.
+function addVendor(data) {
+  console.log(`  Adding: ${data.name} (${data.owner})`);
+  Vendors.collection.insert(data);
 }
 
 function addItem(data) {
@@ -23,6 +30,14 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
+
+// Initialize the StuffsCollection if empty.
+if (Vendors.collection.find().count() === 0) {
+  if (Meteor.settings.defaultVendors) {
+    console.log('Creating default Vendors.');
+    Meteor.settings.defaultVendors.map(data => addVendor(data));
+  }
+}
 if (MenuItems.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');

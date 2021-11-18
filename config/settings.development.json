@@ -11,6 +11,10 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
+  "defaultVendors": [
+    { "name": "Panda Express", "description": "Serving some of the best Chinese food in America", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/panda2-300x171.jpg", "owner": "john@foo.com" },
+    { "name": "Lasoon", "description": "Lasoon offers natural home-cooked Nepali and Indian food for everyone. From a $5 bowl options when you are in a hurry to larger plates to please your appetite.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "owner": "john@foo.com" }
+  ],
   "defaultItems": [
     { "name": "Chicky Sandy", "ingredients": "Chicken, Bread", "owner": "john@foo.com", "cuisineType": "Hawaiian" },
     { "name": "Stew Beet Macaroni", "ingredients": "Stew, Beats, Noodles", "owner": "john@foo.com", "cuisineType": "Italian" },
