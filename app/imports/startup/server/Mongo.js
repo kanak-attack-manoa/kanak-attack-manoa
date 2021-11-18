@@ -9,6 +9,12 @@ function addData(data) {
   Stuffs.collection.insert(data);
 }
 
+// Initialize the database with a default data document.
+function addVendor(data) {
+  console.log(`  Adding: ${data.name} (${data.owner})`);
+  Vendors.collection.insert(data);
+}
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
@@ -21,6 +27,6 @@ if (Stuffs.collection.find().count() === 0) {
 if (Vendors.collection.find().count() === 0) {
   if (Meteor.settings.defaultVendors) {
     console.log('Creating default Vendors.');
-    Meteor.settings.defaultVendors.map(data => addData(data));
+    Meteor.settings.defaultVendors.map(data => addVendor(data));
   }
 }

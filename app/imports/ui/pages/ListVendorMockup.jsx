@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader, Image } from 'semantic-ui-react';
+import { Container, Card, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Vendors } from '../../api/vendor/Vendor';
@@ -20,7 +20,7 @@ class ListVendorMockup extends React.Component {
       <Container>
         <Header as="h2" textAlign="center" inverted>List Contacts</Header>
         <Card.Group>
-          {this.props.vendor.map((vendor, index) => <Vendor
+          {this.props.vendors.map((vendor, index) => <Vendor
             key={index}
             vendor={vendor}/>)}
         </Card.Group>
@@ -31,7 +31,7 @@ class ListVendorMockup extends React.Component {
 
 // Require an array of Stuff documents in the props.
 ListVendorMockup.propTypes = {
-  vendor: PropTypes.object.isRequired,
+  vendors: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -42,9 +42,9 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const stuffs = Vendors.collection.find({}).fetch();
+  const vendors = Vendors.collection.find({}).fetch();
   return {
-    stuffs,
+    vendors,
     ready,
   };
 })(ListVendorMockup);
