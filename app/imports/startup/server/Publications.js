@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
-import { MenuItems } from '../../api/menuitem/MenuItem';
+import { MenuItem } from '../../api/menuitem/MenuItem';
 
 import { Vendors } from '../../api/vendor/Vendor';
 // User-level publication.
@@ -16,10 +16,10 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 
 // User-level publication for MenuItems
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
-Meteor.publish(MenuItems.userPublicationName, function () {
+Meteor.publish(MenuItem.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return MenuItems.collection.find({ owner: username });
+    return MenuItem.collection.find({ owner: username });
   }
   return this.ready();
 });

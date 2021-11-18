@@ -18,7 +18,6 @@ class MenuItemCollection {
       // vendor: String,
       // price: Number,
       ingredients: String,
-      owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -32,4 +31,4 @@ class MenuItemCollection {
  * The singleton instance of the MenuItemCollection.
  * @type {StuffsCollection}
  */
-export const MenuItems = new MenuItemCollection();
+export const MenuItem = new MenuItemCollection();
