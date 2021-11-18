@@ -14,9 +14,9 @@ class MenuItemCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      image: String,
-      vendor: String,
-      price: Number,
+      // image: String,
+      // vendor: String,
+      // price: Number,
       ingredients: String,
       owner: String,
     }, { tracker: Tracker });

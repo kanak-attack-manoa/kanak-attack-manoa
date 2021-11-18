@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { MenuItems } from '../../api/menuitem/MenuItem';
 import { Vendors } from '../../api/vendor/Vendor';
-import { MenuItems } from '../../api/menuitem/MenuItems.js';
 
 /* eslint-disable no-console */
 
@@ -24,11 +23,6 @@ function addVendor(data) {
   Vendors.collection.insert(data);
 }
 
-function addItem(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  MenuItems.collection.insert(data);
-}
-
 // Initialize the StuffsCollection if empty.
 if (Stuffs.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
@@ -39,23 +33,16 @@ if (Stuffs.collection.find().count() === 0) {
 
 // Initialize the MenuItemCollection if empty.
 if (MenuItems.collection.find().count() === 0) {
-  if (Meteor.settings.defaultMenuItems) {
+  if (Meteor.settings.defaultItems) {
     console.log('Creating default data.');
-    Meteor.settings.defaultMenuItems.map(data => addMenuItem(data));
+    Meteor.settings.defaultItems.map(data => addMenuItem(data));
   }
 }
-
 
 // Initialize the StuffsCollection if empty.
 if (Vendors.collection.find().count() === 0) {
   if (Meteor.settings.defaultVendors) {
     console.log('Creating default Vendors.');
     Meteor.settings.defaultVendors.map(data => addVendor(data));
-  }
-}
-if (MenuItems.collection.find().count() === 0) {
-  if (Meteor.settings.defaultItems) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultItems.map(data => addItem(data));
   }
 }

@@ -3,22 +3,9 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
 import { MenuItems } from '../../api/menuitem/MenuItems';
 
 // Create a schema to specify the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  name: String,
-  ingredients: String,
-  cuisineType: {
-    type: String,
-    allowedValues: ['American', 'Chinese', 'Hawaiian', 'Thai', 'Italian', 'Seafood', 'Vegetarian', 'Desert', 'Snack', 'Other'],
-    defaultValue: 'Other',
-  },
-});
-
-const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 class AddMenuItem extends React.Component {
@@ -45,7 +32,7 @@ class AddMenuItem extends React.Component {
       <Grid container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Add Menu Item</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+          <AutoForm ref={ref => { fRef = ref; }} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <TextField name='name'/>
               <TextField name='ingredients' placeholder='tomato, lettuce, onion, beef, beets, brains'></TextField>
