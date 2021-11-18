@@ -9,5 +9,11 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultItems": [
+    { "name": "Chicky Sandy", "ingredients": "Chicken, Bread", "owner": "john@foo.com", "cuisineType": "Hawaiian" },
+    { "name": "Stew Beet Macaroni", "ingredients": "Stew, Beats, Noodles", "owner": "john@foo.com", "cuisineType": "Italian" },
+    { "name": "Meat Salad", "ingredients": "Meat, Lettuce", "owner": "admin@foo.com", "cuisineType": "American" }
   ]
 }
