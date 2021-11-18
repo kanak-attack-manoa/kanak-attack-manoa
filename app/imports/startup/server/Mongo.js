@@ -24,7 +24,7 @@ if (Stuffs.collection.find().count() === 0) {
 }
 
 if (MenuItems.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.defaultItems) {
     console.log('Creating default data.');
     Meteor.settings.defaultItems.map(data => addItem(data));
   }
