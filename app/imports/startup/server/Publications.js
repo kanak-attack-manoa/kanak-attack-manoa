@@ -2,8 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { MenuItem } from '../../api/menuitem/MenuItem';
-
 import { Vendors } from '../../api/vendor/Vendor';
+
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(Stuffs.userPublicationName, function () {
@@ -29,6 +29,20 @@ Meteor.publish(MenuItem.userPublicationName, function () {
 Meteor.publish(Stuffs.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Stuffs.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(MenuItem.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return MenuItem.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Vendors.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Vendors.collection.find();
   }
   return this.ready();
 });
