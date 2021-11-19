@@ -14,9 +14,10 @@ class MenuItemCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      // image: String,
-      // vendor: String,
-      // price: Number,
+      image: String,
+      vendor: String,
+      price: Number,
+      owner: String,
       ingredients: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
