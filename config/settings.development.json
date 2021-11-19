@@ -1,20 +1,21 @@
 {
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "john@foo.com", "password": "changeme" },
+    { "email": "vendor@foo.com", "password": "changeme", "role": "vendor" }
   ],
 
   "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+    { "name": "John", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
+    { "name": "L&L Hawaiian Barbecue", "quantity": 2, "owner": "vendor@foo.com", "condition": "poor" },
+    { "name": "Lasoon", "quantity": 2, "owner": "vendor@foo.com", "condition": "excellent" }
   ],
 
   "defaultVendors": [
     { "name": "Panda Express", "description": "Serving some of the best Chinese food in America.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/panda2-300x171.jpg", "owner": "john@foo.com" },
     { "name": "Lasoon", "description": "Lasoon offers natural home-cooked Nepali and Indian food for everyone. From a $5 bowl options when you are in a hurry to larger plates to please your appetite.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "owner": "john@foo.com" }
   ],
+
   "defaultItems": [
     { "name": "Chicky Sandy", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda", "price": 3, "ingredients": "Chicken, Bread", "owner": "john@foo.com" },
     { "name": "Stew Beet Macaroni", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda", "price": 4, "ingredients": "Stew, Beats, Noodles", "owner": "john@foo.com" },
