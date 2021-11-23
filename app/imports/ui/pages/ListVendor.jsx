@@ -7,7 +7,7 @@ import { Vendors } from '../../api/vendor/Vendor';
 import Vendor from '../components/Vendor';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListVendorMockup extends React.Component {
+class ListVendor extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -30,7 +30,7 @@ class ListVendorMockup extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-ListVendorMockup.propTypes = {
+ListVendor.propTypes = {
   vendors: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -47,4 +47,4 @@ export default withTracker(() => {
     vendors,
     ready,
   };
-})(ListVendorMockup);
+})(ListVendor);
