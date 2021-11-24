@@ -7,18 +7,21 @@
 
   "defaultData": [
     { "name": "John", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "L&L Hawaiian Barbecue", "quantity": 2, "owner": "vendor@foo.com", "condition": "poor" },
-    { "name": "Lasoon", "quantity": 2, "owner": "vendor@foo.com", "condition": "excellent" }
+    { "name": "L&L Hawaiian Barbecue", "quantity": 2, "owner": "admin@foo.com", "condition": "poor" },
+    { "name": "Panda Express", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
   "defaultVendors": [
-    { "name": "Panda Express", "description": "Serving some of the best Chinese food in America.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/panda2-300x171.jpg", "owner": "john@foo.com" },
-    { "name": "Lasoon", "description": "Lasoon offers natural home-cooked Nepali and Indian food for everyone. From a $5 bowl options when you are in a hurry to larger plates to please your appetite.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "owner": "john@foo.com" }
+    { "name": "L&L Hawaiian Barbecue", "description": "Delicious local and Asian-American fusion cuisine served in big portions at reasonable prices! Try delicious L&L favorites like the Hawaiian Barbecue beef, chicken, or short ribs! Enjoy L&L’s famous fried chicken katsu, the best in town! Grab-and-go, breakfast items and party packs for groups also available.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_big.jpg", "owner": "admin@foo.com" },
+    { "name": "Panda Express", "description": "Panda Express serves gourmet Chinese food made with only the freshest ingredients. Famous for its Orange Chicken, they also offer a number of Wok Smart entrées that contain less than 250 calories per serving, such as Shanghai Angus Steak, Kung Pao Chicken, and Broccoli Beef. Other favorites include Beijing Beef, Sweetfire Chicken Breast, and Honey Walnut Shrimp.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/panda2-300x171.jpg", "owner": "admin@foo.com" }
   ],
 
   "defaultItems": [
-    { "name": "Chicky Sandy", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda", "price": 3, "ingredients": "Chicken, Bread", "owner": "john@foo.com" },
-    { "name": "Stew Beet Macaroni", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda", "price": 4, "ingredients": "Stew, Beats, Noodles", "owner": "john@foo.com" },
-    { "name": "Meat Salad", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda", "price": 6, "ingredients": "Meat, Lettuce", "owner": "admin@foo.com" }
+    { "name": "Orange Chicken", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 6.90, "ingredients": "Chicken", "owner": "vendor@foo.com" },
+    { "name": "ShangHai Angus Steak", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Siroloin Steak, Green Beans, Mushrooms, Garlic", "owner": "vendor@foo.com" },
+    { "name": "Honey Walnut Shrimp", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Shrimp, Walnut, Honey", "owner": "vendor@foo.com" },
+    { "name": "Chicken Katsu", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 13.48, "ingredients": "Chicken", "owner": "vendor@foo.com" },
+    { "name": "Beef Stew", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 7.99, "ingredients": "Potatoes, Carrots, Beef", "owner": "vendor@foo.com" },
+    { "name": "Hamburger Steak", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 6, "ingredients": "Hamburger, Gravy", "owner": "vendor@foo.com" }
   ]
 }
