@@ -10,14 +10,12 @@ import Landing from '../pages/Landing';
 import HomeAdmin from '../pages/HomeAdmin';
 import EditMenuItem from '../pages/EditMenuItem';
 import AddMenuItem from '../pages/AddMenuItem';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import ListVendorMockup from '../pages/ListVendorMockup';
 import ListMenuItems from '../pages/ListMenuItems';
-import Vendor from '../components/Vendor';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {

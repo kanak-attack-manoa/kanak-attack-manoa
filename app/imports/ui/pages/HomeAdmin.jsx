@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Table, Header, Grid, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import UsersAdmin from '../components/UsersAdmin';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -31,7 +33,7 @@ class HomeAdmin extends React.Component {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {Meteor.users.find().map((user) => <UsersAdmin key={user._id} user={user} />)}
+            {this.props.users.map((user) => <UsersAdmin key={user._id} user={user} />)}
           </Table.Body>
         </Table>
       </Container>
@@ -39,5 +41,23 @@ class HomeAdmin extends React.Component {
   }
 }
 
+// {Meteor.users.find().map((user) => <UsersAdmin key={user._id} user={user} />)}
+// Require an array of User documents in the props.
+HomeAdmin.propTypes = {
+  users: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-export default HomeAdmin;
+export default withTracker(() => {
+  // Get access to Users documents.
+  const subscription = Meteor.subscribe(Meteor.users.adminPublicationName);
+  // Determine if the subscription is ready
+  const ready = subscription.ready();
+  // Get the User documents
+  const users = Meteor.users.find({}).fetch();
+  return {
+    users,
+    ready,
+  };
+})(HomeAdmin);
