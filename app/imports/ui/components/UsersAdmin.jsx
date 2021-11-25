@@ -11,7 +11,7 @@ class UsersAdmin extends React.Component {
         <Table.Cell>{this.props.user.username}</Table.Cell>
         <Table.Cell>{this.props.user._id}</Table.Cell>
         <Table.Cell>
-          <Button icon onClick={ () => Roles.addUsersToRoles(this.props.user._id, 'vendor') }><Icon name='add'/></Button>
+          <Button icon onClick={ () => { Roles.createRole('vendor', { unlessExists: true }); Roles.addUsersToRoles(this.props.user._id, 'vendor'); } }><Icon name='add'/></Button>
         </Table.Cell>
       </Table.Row>
     );
