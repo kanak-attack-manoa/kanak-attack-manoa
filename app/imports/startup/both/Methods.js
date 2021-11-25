@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 
 Meteor.methods({
+  // eslint-disable-next-line meteor/audit-argument-checks
   addUserRoleVendor: function (userId) {
     Roles.createRole('vendor', { unlessExists: true });
     Roles.addUsersToRoles(userId, 'vendor');
