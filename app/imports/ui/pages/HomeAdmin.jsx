@@ -1,21 +1,14 @@
 import React from 'react';
+import { Container, Table, Header, Grid, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader, Grid, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
-import StuffItemAdmin from '../components/StuffItemAdmin';
+import UsersAdmin from '../components/UsersAdmin';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class HomeAdmin extends React.Component {
-
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
   // Render the page once subscriptions have been received.
-  renderPage() {
+  render() {
     return (
       <Container style={ { padding: '10px 0px 0px 0px' } } >
         <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
@@ -26,7 +19,7 @@ class HomeAdmin extends React.Component {
 
           <Grid.Column width={8}>
             <h1 style={ { padding: '10px 0px 0px 0px', color: 'white', fontSize: '30px' }}>Welcome to Admin</h1>
-            <h4 inverted style={{ color: 'white' }}>As administrator, you can handle user profiles and define users as having the vendor role</h4>
+            <h4 style={{ color: 'white' }}>As administrator, you can handle user profiles and define users as having the vendor role</h4>
           </Grid.Column>
 
         </Grid>
@@ -34,13 +27,13 @@ class HomeAdmin extends React.Component {
         <Table celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
               <Table.HeaderCell>Email</Table.HeaderCell>
+              <Table.HeaderCell>User ID</Table.HeaderCell>
               <Table.HeaderCell>Add as Vendor</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {this.props.stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
+            {this.props.users.map((user) => <UsersAdmin key={user._id} user={user} />)}
           </Table.Body>
         </Table>
       </Container>
@@ -48,22 +41,23 @@ class HomeAdmin extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
+// {Meteor.users.find().map((user) => <UsersAdmin key={user._id} user={user} />)}
+// Require an array of User documents in the props.
 HomeAdmin.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.adminPublicationName);
+  // Get access to Users documents.
+  const subscription = Meteor.subscribe(Meteor.users.adminPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  // Get the User documents
+  const users = Meteor.users.find({}).fetch();
   return {
-    stuffs,
+    users,
     ready,
   };
 })(HomeAdmin);

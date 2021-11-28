@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Meteor } from 'meteor/meteor';
+import '/imports/startup/both/Methods';
 import App from '../../ui/layouts/App.jsx';
 
 /* global document */

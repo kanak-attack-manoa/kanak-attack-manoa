@@ -11,7 +11,7 @@ class MenuItems extends React.Component {
         <Card.Content>
           <Image
             floated='right'
-            size='mini'
+            size='large'
             src={this.props.menuItem.image}
           />
           <Card.Header>{this.props.menuItem.name}</Card.Header>

@@ -57,11 +57,11 @@ class Landing extends React.Component {
                     <Comment.Metadata>
                       <div style={commentStyle}>2 days ago</div>
                       <div>
-                        <Icon style={commentStyle} name='star' color="white" />
-                        <Icon style={commentStyle} name='star' color="white" />
-                        <Icon style={commentStyle} name='star' color="white" />
-                        <Icon style={commentStyle} name='star' color="white" />
-                        <Icon style={commentStyle} name='star' color="white" />
+                        <Icon style={commentStyle} name='star' inverted/>
+                        <Icon style={commentStyle} name='star' inverted />
+                        <Icon style={commentStyle} name='star' inverted />
+                        <Icon style={commentStyle} name='star' inverted />
+                        <Icon style={commentStyle} name='star' inverted />
                       </div>
                     </Comment.Metadata>
                     <Comment.Text style={commentStyle}>
