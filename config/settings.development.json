@@ -17,7 +17,7 @@
   ],
 
   "defaultItems": [
-    { "name": "Orange Chicken", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_OrangeChicken.jpg", ",vendor": "Panda Express", "price": 6.90, "ingredients": "Chicken", "owner": "vendor@foo.com" },
+    { "name": "Orange Chicken", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_OrangeChicken.jpg", "vendor": "Panda Express", "price": 6.90, "ingredients": "Chicken", "owner": "vendor@foo.com" },
     { "name": "ShangHai Angus Steak", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_bpas.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Siroloin Steak, Green Beans, Mushrooms, Garlic", "owner": "vendor@foo.com" },
     { "name": "Honey Walnut Shrimp", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_HoneyWalnutShrimp.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Shrimp, Walnut, Honey", "owner": "vendor@foo.com" },
     { "name": "Chicken Katsu", "image": "https://onohawaiianrecipes.com/wp-content/uploads/2020/07/Chicken-Katsu-16x9-1-500x500.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 13.48, "ingredients": "Chicken", "owner": "vendor@foo.com" },
