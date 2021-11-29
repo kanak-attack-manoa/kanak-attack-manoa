@@ -21,7 +21,7 @@ class Vendor extends React.Component {
         <Card.Content>
           <Image
             floated='right'
-            size='mini'
+            size='small'
             src={this.props.vendor.image}
           />
           <Card.Header>{this.props.vendor.name}</Card.Header>
