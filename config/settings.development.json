@@ -2,7 +2,8 @@
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" },
-    { "email": "vendor@foo.com", "password": "changeme", "role": "vendor" }
+    { "email": "vendor@foo.com", "password": "changeme", "role": "vendor" },
+    { "email": "vendor2@foo.com", "password": "changeme", "role": "vendor" }
   ],
 
   "defaultData": [
@@ -25,8 +26,8 @@
     { "name": "Orange Chicken", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_OrangeChicken.jpg", "vendor": "Panda Express", "price": 6.90, "ingredients": "Chicken", "owner": "vendor@foo.com" },
     { "name": "Shanghai Angus Steak", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_bpas.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Sirloin Steak, Green Beans, Mushrooms, Garlic", "owner": "vendor@foo.com" },
     { "name": "Honey Walnut Shrimp", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_HoneyWalnutShrimp.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Shrimp, Walnut, Honey", "owner": "vendor@foo.com" },
-    { "name": "Chicken Katsu", "image": "https://onohawaiianrecipes.com/wp-content/uploads/2020/07/Chicken-Katsu-16x9-1-500x500.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 13.48, "ingredients": "Chicken", "owner": "vendor@foo.com" },
-    { "name": "Beef Stew", "image": "https://images.squarespace-cdn.com/content/v1/5b085d14e17ba30d3e9f8684/1609194257926-6PSGBLV9MC8LN6SQNMON/KAP-L%26LDriveInn-BeefStew.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 7.99, "ingredients": "Potatoes, Carrots, Beef", "owner": "vendor@foo.com" },
-    { "name": "Loco Moco", "image": "https://www.hawaiianbbqplano.com/wp-content/uploads/2019/07/Loco_Moco-optimized.png", "vendor": "L&L Hawaiian Barbecue", "price": 6, "ingredients": "Hamburger, Gravy, Eggs", "owner": "vendor@foo.com" }
+    { "name": "Chicken Katsu", "image": "https://onohawaiianrecipes.com/wp-content/uploads/2020/07/Chicken-Katsu-16x9-1-500x500.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 13.48, "ingredients": "Chicken", "owner": "vendor2@foo.com" },
+    { "name": "Beef Stew", "image": "https://images.squarespace-cdn.com/content/v1/5b085d14e17ba30d3e9f8684/1609194257926-6PSGBLV9MC8LN6SQNMON/KAP-L%26LDriveInn-BeefStew.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 7.99, "ingredients": "Potatoes, Carrots, Beef", "owner": "vendor2@foo.com" },
+    { "name": "Loco Moco", "image": "https://www.hawaiianbbqplano.com/wp-content/uploads/2019/07/Loco_Moco-optimized.png", "vendor": "L&L Hawaiian Barbecue", "price": 6, "ingredients": "Hamburger, Gravy, Eggs", "owner": "vendor2@foo.com" }
   ]
 }
