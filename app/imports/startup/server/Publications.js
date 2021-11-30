@@ -15,11 +15,12 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 });
 
 // User-level publication for MenuItems
+// all users should be able to see all possible menu items in the database
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(MenuItem.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return MenuItem.collection.find({ owner: username });
+    // const username = Meteor.users.findOne(this.userId).username;
+    return MenuItem.collection.find();
   }
   return this.ready();
 });
@@ -65,11 +66,12 @@ Meteor.publish(null, function () {
 });
 
 // User-level publication.
+// Users should be able to see all of the available vendors in the database
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(Vendors.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Vendors.collection.find({ owner: username });
+    // const username = Meteor.users.findOne(this.userId).username;
+    return Vendors.collection.find();
   }
   return this.ready();
 });
