@@ -10,7 +10,7 @@ class Landing extends React.Component {
     return (
       <div className="kanak-attack-landing-background">
         <div>
-          <Grid container centered>
+          <Grid id="landing-page" container centered>
             <Grid.Row>
               <Image src='https://www6.pbrc.hawaii.edu/logos/manoaseal_transparent.png' size='small' />
             </Grid.Row>
