@@ -40,16 +40,16 @@ class AddMenuItem extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
+      <Grid id="add-menu-item" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Add Menu Item</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
-              <TextField name='image'/>
-              <TextField name='vendor'/>
-              <NumField name='price'/>
-              <TextField name='ingredients' placeholder='tomato, lettuce, onion, beef, beets, brains'></TextField>
+              <TextField id="name" name='name'/>
+              <TextField id="image" name='image'/>
+              <TextField id="vendor" name='vendor'/>
+              <NumField id="price" name='price'/>
+              <TextField id="ingredients" name='ingredients' placeholder='tomato, lettuce, onion, beef, beets, brains'></TextField>
               <SubmitField value='Submit'/>
               <ErrorsField/>
             </Segment>
