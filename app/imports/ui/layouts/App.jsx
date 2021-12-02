@@ -11,12 +11,14 @@ import HomeAdmin from '../pages/HomeAdmin';
 import EditMenuItem from '../pages/EditMenuItem';
 import AddMenuItem from '../pages/AddMenuItem';
 import NotFound from '../pages/NotFound';
+import Search from '../pages/Search'
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import ListVendor from '../pages/ListVendor';
 import ListMenuItems from '../pages/ListMenuItems';
 import ListMenuItemsVendor from '../pages/ListMenuItemsVendor';
+import EditVendor from '../pages/EditVendor';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
