@@ -32,6 +32,9 @@ class Vendor extends React.Component {
         <Card.Content extra>
           <Link to={`/list/${this.props.vendor._id}`}>Menu</Link>
         </Card.Content>
+        <Card.Content extra>
+          <Link id="edit-vendor" to={`/edit-vendor/${this.props.vendor._id}`}>Edit</Link>
+        </Card.Content>
       </Card>
     );
   }
