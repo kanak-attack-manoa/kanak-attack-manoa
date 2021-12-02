@@ -6,9 +6,8 @@ import { Container, Loader, Card, Image, Label, Segment } from 'semantic-ui-reac
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import { AutoForm, SubmitField } from 'uniforms-semantic';
+import { AutoForm, SubmitField, TextField } from 'uniforms-semantic';
 import { MenuItem } from '../../api/menuitem/MenuItem';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allIngredients) => new SimpleSchema({
@@ -18,7 +17,7 @@ const makeSchema = (allIngredients) => new SimpleSchema({
 
 function getMenuItemData(email) {
   const data = MenuItem.collection.findOne({ email });
-  const ingredients = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'ingredient');
+  const ingredients = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'ingredients');
   const images = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'image');
   const prices = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'price');
   const vendors = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'vendor');
@@ -72,18 +71,18 @@ class Filter extends React.Component {
     const allIngredients = _.pluck(MenuItem.collection.find().fetch(), 'name');
     const formSchema = makeSchema(allIngredients);
     const bridge = new SimpleSchema2Bridge(formSchema);
-    const emails = _.pluck(MenuItem.collection.find({ interest: { $in: this.state.ingredients } }).fetch(), 'menuItem');
+    const emails = _.pluck(MenuItem.collection.find({ ingredients: { $in: this.state.ingredients } }).fetch(), 'menuItem');
     const menuItemData = _.uniq(emails).map(email => getMenuItemData(email));
     return (
       <Container id="filter-page">
         <AutoForm schema={bridge} onSubmit={data => this.submit(data)} >
           <Segment>
-            <MultiSelectField id='ingredients' name='ingredients' showInlineError={true} placeholder={'Ingredients'}/>
+            <TextField id='ingredients' name='ingredients' showInlineError={true} placeholder={'Ingredients'}/>
             <SubmitField id='submit' value='Submit'/>
           </Segment>
         </AutoForm>
         <Card.Group style={{ paddingTop: '10px' }}>
-          {_.map(menuItemData, (profile, index) => <MenuItem key={index} profile={profile}/>)}
+          {_.map(menuItemData, (menuItem, index) => <MenuItem key={index} profile={menuItem}/>)}
         </Card.Group>
       </Container>
     );
