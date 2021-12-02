@@ -21,7 +21,7 @@
 
   "defaultItems": [
     { "name": "Chicky Sandy", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 3, "ingredients": "Chicken, Bread", "owner": "panda@foo.com" },
-    { "name": "Butter Chicken", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Lasoon", "price": 8.50, "ingredients": "Chicken, Curry", "owner": "vendor@foo.com" },
+    { "name": "Butter Chicken", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Lasoon", "price": 8.50, "ingredients": "Chicken, Curry", "owner": "lasoon@foo.com" },
     { "name": "Stew Beet Macaroni", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 4, "ingredients": "Stew, Beats, Noodles", "owner": "panda@foo.com" },
     { "name": "Meat Salad", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 6, "ingredients": "Meat, Lettuce", "owner": "panda@foo.com" },
     { "name": "Orange Chicken", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_OrangeChicken.jpg", "vendor": "Panda Express", "price": 6.90, "ingredients": "Chicken", "owner": "vendor@foo.com" },
