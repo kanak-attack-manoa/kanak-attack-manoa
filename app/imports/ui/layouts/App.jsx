@@ -11,7 +11,6 @@ import HomeAdmin from '../pages/HomeAdmin';
 import EditMenuItem from '../pages/EditMenuItem';
 import AddMenuItem from '../pages/AddMenuItem';
 import NotFound from '../pages/NotFound';
-import Search from '../pages/Search'
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
@@ -33,7 +32,6 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <Route path="/vendors" component={ListVendor}/>
-            <Route path="/search" component={Search}/>
             <ProtectedRoute path="/list/:_id" component={ListMenuItemsVendor}/>
             <ProtectedRoute path="/list" component={ListMenuItems}/>
             <AdminProtectedRoute path="/edit-vendor/:_id" component={EditVendor}/>
