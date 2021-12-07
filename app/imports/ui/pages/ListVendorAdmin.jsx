@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Card, Image } from 'semantic-ui-react';
+import { Container, Card, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Vendors } from '../../api/vendor/Vendor';
+import VendorAdmin from '../components/VendorAdmin';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class Vendor extends React.Component {
+class ListVendor extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -17,29 +17,21 @@ class Vendor extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Card centered>
-        <Card.Content>
-          <Image
-            floated='right'
-            size='small'
-            src={this.props.vendor.image}
-          />
-          <Card.Header>{this.props.vendor.name}</Card.Header>
-          <Card.Description>
-            {this.props.vendor.description}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <Link to={`/list/${this.props.vendor._id}`}>Menu</Link>
-        </Card.Content>
-      </Card>
+      <Container>
+        <Header as="h2" textAlign="center" inverted>List Vendors</Header>
+        <Card.Group>
+          {this.props.vendors.map((vendor, index) => <VendorAdmin
+            key={index}
+            vendor={vendor}/>)}
+        </Card.Group>
+      </Container>
     );
   }
 }
 
 // Require an array of Stuff documents in the props.
-Vendor.propTypes = {
-  vendor: PropTypes.object.isRequired,
+ListVendor.propTypes = {
+  vendors: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -55,4 +47,4 @@ export default withTracker(() => {
     vendors,
     ready,
   };
-})(Vendor);
+})(ListVendor);

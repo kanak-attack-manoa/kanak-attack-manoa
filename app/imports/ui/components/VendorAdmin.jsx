@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Vendors } from '../../api/vendor/Vendor';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class Vendor extends React.Component {
+class VendorAdmin extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -30,7 +30,7 @@ class Vendor extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/list/${this.props.vendor._id}`}>Menu</Link>
+          <Link id="edit-vendor" to={`/edit-vendor/${this.props.vendor._id}`}>Edit</Link>
         </Card.Content>
       </Card>
     );
@@ -38,7 +38,7 @@ class Vendor extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-Vendor.propTypes = {
+VendorAdmin.propTypes = {
   vendor: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -55,4 +55,4 @@ export default withTracker(() => {
     vendors,
     ready,
   };
-})(Vendor);
+})(VendorAdmin);
