@@ -3,7 +3,8 @@
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" },
     { "email": "vendor@foo.com", "password": "changeme", "role": "vendor" },
-    { "email": "panda@foo.com", "password": "changeme", "role": "vendor" }
+    { "email": "panda@foo.com", "password": "changeme", "role": "vendor" },
+    { "email": "l&l@foo.com", "password": "changeme", "role": "vendor" }
   ],
 
   "defaultData": [
@@ -19,11 +20,15 @@
   ],
 
   "defaultItems": [
+    { "name": "Chicky Sandy", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 3, "ingredients": "Chicken, Bread", "owner": "panda@foo.com" },
+    { "name": "Butter Chicken", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Lasoon", "price": 8.50, "ingredients": "Chicken, Curry", "owner": "lasoon@foo.com" },
+    { "name": "Stew Beet Macaroni", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 4, "ingredients": "Stew, Beats, Noodles", "owner": "panda@foo.com" },
+    { "name": "Meat Salad", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Panda Express", "price": 6, "ingredients": "Meat, Lettuce", "owner": "panda@foo.com" },
     { "name": "Orange Chicken", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_OrangeChicken.jpg", "vendor": "Panda Express", "price": 6.90, "ingredients": "Chicken", "owner": "panda@foo.com" },
     { "name": "Shanghai Angus Steak", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_bpas.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Sirloin Steak, Green Beans, Mushrooms, Garlic", "owner": "panda@foo.com" },
     { "name": "Honey Walnut Shrimp", "image": "https://s3.amazonaws.com/PandaExpressWebsite/Responsive/img/food/thumbnails/grid_HoneyWalnutShrimp.jpg", "vendor": "Panda Express", "price": 9.40, "ingredients": "Shrimp, Walnut, Honey", "owner": "panda@foo.com" },
-    { "name": "Chicken Katsu", "image": "https://onohawaiianrecipes.com/wp-content/uploads/2020/07/Chicken-Katsu-16x9-1-500x500.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 13.48, "ingredients": "Chicken", "owner": "vendor@foo.com" },
-    { "name": "Beef Stew", "image": "https://images.squarespace-cdn.com/content/v1/5b085d14e17ba30d3e9f8684/1609194257926-6PSGBLV9MC8LN6SQNMON/KAP-L%26LDriveInn-BeefStew.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 7.99, "ingredients": "Potatoes, Carrots, Beef", "owner": "vendor@foo.com" },
-    { "name": "Loco Moco", "image": "https://www.hawaiianbbqplano.com/wp-content/uploads/2019/07/Loco_Moco-optimized.png", "vendor": "L&L Hawaiian Barbecue", "price": 6, "ingredients": "Hamburger, Gravy, Eggs", "owner": "vendor@foo.com" }
+    { "name": "Chicken Katsu", "image": "https://onohawaiianrecipes.com/wp-content/uploads/2020/07/Chicken-Katsu-16x9-1-500x500.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 13.48, "ingredients": "Chicken", "owner": "l&l@foo.com" },
+    { "name": "Beef Stew", "image": "https://images.squarespace-cdn.com/content/v1/5b085d14e17ba30d3e9f8684/1609194257926-6PSGBLV9MC8LN6SQNMON/KAP-L%26LDriveInn-BeefStew.jpg", "vendor": "L&L Hawaiian Barbecue", "price": 7.99, "ingredients": "Potatoes, Carrots, Beef", "owner": "l&l@foo.com" },
+    { "name": "Loco Moco", "image": "https://www.hawaiianbbqplano.com/wp-content/uploads/2019/07/Loco_Moco-optimized.png", "vendor": "L&L Hawaiian Barbecue", "price": 6, "ingredients": "Hamburger, Gravy, Eggs", "owner": "l&l@foo.com" }
   ]
 }

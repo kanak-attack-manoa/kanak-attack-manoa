@@ -19,7 +19,10 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(MenuItem.userPublicationName, function () {
   if (this.userId) {
-    // const username = Meteor.users.findOne(this.userId).username;
+    const username = Meteor.users.findOne(this.userId).username;
+    if (Roles.userIsInRole(this.userId, 'vendor')) {
+      return MenuItem.collection.find({ owner: username });
+    }
     return MenuItem.collection.find();
   }
   return this.ready();
