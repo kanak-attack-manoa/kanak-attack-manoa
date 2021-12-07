@@ -54,7 +54,7 @@ class VendorHome extends React.Component {
           </Grid.Column>
 
         </Grid>
-        <Header as="h2" textAlign="center" inverted>List Vendors</Header>
+        <Header as="h2" textAlign="center" inverted>Your Profile</Header>
         <Card.Group>
           {this.props.vendors.map((vendor, index) => <OwnVendor
             key={index}
