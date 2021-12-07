@@ -35,8 +35,9 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 });
 
 Meteor.publish(MenuItem.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return MenuItem.collection.find();
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return MenuItem.collection.find({ owner: username });
   }
   return this.ready();
 });
