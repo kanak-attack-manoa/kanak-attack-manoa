@@ -13,7 +13,7 @@ import OwnVendor from '../components/OwnVendor';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   name: String,
-  description: Number,
+  description: String,
   image: String,
 });
 
