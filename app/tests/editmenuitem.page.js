@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 
 class EditMenuItemPage {
   constructor() {
-    this.pageId = '#add-menu-item';
+    this.pageId = '#edit-menu-item';
     this.pageSelector = Selector(this.pageId);
   }
 
