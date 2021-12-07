@@ -46,8 +46,9 @@ Meteor.publish(MenuItem.adminPublicationName, function () {
 });
 
 Meteor.publish(Vendors.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Vendors.collection.find();
+  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Vendors.collection.find({ owner: username });
   }
   return this.ready();
 });

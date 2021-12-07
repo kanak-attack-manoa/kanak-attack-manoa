@@ -1,53 +1,46 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
+import { Grid, Loader, Header, Segment, Icon, Container } from 'semantic-ui-react';
 import swal from 'sweetalert';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
 import { Vendors } from '../../api/vendor/Vendor';
 
-// Create a schema to specify the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  name: String,
-  description: Number,
-  image: String,
-});
+const bridge = new SimpleSchema2Bridge(Vendors.schema);
 
-const bridge = new SimpleSchema2Bridge(formSchema);
+/** Renders the Page for editing a single document. */
+class EditVendorProfile extends React.Component {
 
-/** Renders the Page for adding a document. */
-class AddVendor extends React.Component {
-
-  // On submit, insert the data.
-  submit(data, formRef) {
-    const { name, description, image } = data;
+  // On successful submit, insert the data.
+  submit(data) {
+    const { name, image, description, _id } = data;
     const owner = Meteor.user().username;
-    Vendors.collection.insert({ name, description, image, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      });
+    Vendors.collection.update(_id, { $set: { name, image, description, owner } }, (error) => (error ?
+      swal('Error', error.message, 'error') :
+      swal('Success', 'Item updated successfully', 'success')));
+  }
+
+  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
+  render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
-  render() {
-    let fRef = null;
+  renderPage() {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add Stuff</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+          <Header as="h2" textAlign="center" inverted>Edit Your Vendor Profile</Header>
+          <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
               <TextField name='name'/>
-              <LongTextField name='Description'/>
+              <LongTextField name='description'/>
               <TextField name='image'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
+              <HiddenField name='owner' />
             </Segment>
           </AutoForm>
         </Grid.Column>
@@ -56,4 +49,25 @@ class AddVendor extends React.Component {
   }
 }
 
-export default AddVendor;
+// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+EditVendorProfile.propTypes = {
+  doc: PropTypes.object,
+  model: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
+};
+
+// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+export default withTracker(({ match }) => {
+  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const documentId = match.params._id;
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe(Vendors.userPublicationName);
+  // Determine if the subscription is ready
+  const ready = subscription.ready();
+  // Get the document
+  const doc = Vendors.collection.findOne(documentId);
+  return {
+    doc,
+    ready,
+  };
+})(EditVendorProfile);
