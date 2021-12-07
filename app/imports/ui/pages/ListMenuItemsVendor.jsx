@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Card, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import MenuItems from '../components/MenuItems';
+import MenuItemsAdmin from '../components/MenuItemsAdmin';
 import { MenuItem } from '../../api/menuitem/MenuItem';
 import { Vendors } from '../../api/vendor/Vendor';
 
@@ -27,7 +27,7 @@ class ListMenuItemsVendor extends React.Component {
       <Container id="profiles-page">
         <h1>Vendor Menu Page</h1>
         <Card.Group centered>
-          {_.map(vendorMenu, (menuItem, index) => <MenuItems key={index} menuItem={menuItem}/>)}
+          {_.map(vendorMenu, (menuItem, index) => <MenuItemsAdmin key={index} menuItem={menuItem}/>)}
         </Card.Group>
       </Container>
     );
