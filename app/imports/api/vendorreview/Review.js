@@ -14,6 +14,8 @@ class ReviewCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
+      vendorId: String,
+      createdAt: Date,
       owner: String,
       description: String,
       rating: {
@@ -32,6 +34,6 @@ class ReviewCollection {
 
 /**
  * The singleton instance of the MenuItemCollection.
- * @type {StuffsCollection}
+ * @type {ReviewCollection}
  */
 export const Review = new ReviewCollection();

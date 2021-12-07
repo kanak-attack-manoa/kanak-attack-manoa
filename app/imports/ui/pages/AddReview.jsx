@@ -1,22 +1,22 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Review } from '../../api/vendorreview/Review';
 
-// Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   name: String,
-  description: String,
-  vendor: String,
+  vendorId: String,
+  createdAt: Date,
   rating: {
     type: Number,
     allowedValues: [1, 2, 3, 4, 5],
     defaultValue: 4,
   },
+  description: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -26,9 +26,9 @@ class AddReview extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { name, rating, description } = data;
+    const { name, rating, vendorId, description, createdAt } = data;
     const owner = Meteor.user().username;
-    Review.collection.insert({ name, rating, description, owner },
+    Review.collection.insert({ name, vendorId, createdAt, rating, description, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -51,7 +51,8 @@ class AddReview extends React.Component {
               <TextField id="name" name='name' placeholder='use a nickname'/>
               <SelectField name='rating'/>
               <TextField id="description" name='description'/>
-              <TextField id="vendor" name='vendor' placeholder='Panda Express'/>
+              <TextField id="vendorId" name='vendorId' placeholder='Panda Express'/>
+              <HiddenField name='createdAt' value={new Date()}/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
             </Segment>

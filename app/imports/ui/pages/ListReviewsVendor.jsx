@@ -4,8 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Card, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import Reviews from '../components/MenuItems';
-import { MenuItem } from '../../api/menuitem/MenuItem';
+import Reviews from '../components/Reviews';
 import { Vendors } from '../../api/vendor/Vendor';
 import { Review } from '../../api/vendorreview/Review';
 
@@ -23,12 +22,12 @@ class ListReviewsVendor extends React.Component {
     // const vendorMenu = menuByVendor(this.props.menuItem);
     const vendorName = this.props.name.name;
     // console.log(this.props.name.name);
-    const vendorMenu = MenuItem.collection.find({ vendor: vendorName }).fetch();
+    const vendorReview = Review.collection.find({ review: vendorName }).fetch();
     return (
-      <Container id="profiles-page">
-        <h1>Vendor Menu Page</h1>
+      <Container id="list-reviews">
+        <h1>Vendor Review Page</h1>
         <Card.Group centered>
-          {_.map(vendorMenu, (menuItem, index) => <Reviews key={index} review={review} />)}
+          {_.map(vendorReview, (review, index) => <Reviews key={index} review={review} />)}
         </Card.Group>
       </Container>
     );

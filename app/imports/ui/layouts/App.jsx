@@ -19,6 +19,7 @@ import ListMenuItems from '../pages/ListMenuItems';
 import ListMenuItemsVendor from '../pages/ListMenuItemsVendor';
 import EditVendor from '../pages/EditVendor';
 import AddReview from '../pages/AddReview';
+import ListReviewsVendor from '../pages/ListReviewsVendor';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -34,6 +35,7 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <Route path="/vendors" component={ListVendor}/>
             <Route path="/add-review" component={AddReview}/>
+            <Route path="/list-reviews" component={ListReviewsVendor}/>
             <ProtectedRoute path="/list/:_id" component={ListMenuItemsVendor}/>
             <ProtectedRoute path="/list" component={ListMenuItems}/>
             <AdminProtectedRoute path="/edit-vendor/:_id" component={EditVendor}/>
