@@ -4,12 +4,13 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Card, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import MenuItems from '../components/MenuItems';
+import Reviews from '../components/MenuItems';
 import { MenuItem } from '../../api/menuitem/MenuItem';
 import { Vendors } from '../../api/vendor/Vendor';
+import { Review } from '../../api/vendorreview/Review';
 
 /** Renders the Profile Collection as a set of Cards. */
-class ListMenuItemsVendor extends React.Component {
+class ListReviewsVendor extends React.Component {
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -27,7 +28,7 @@ class ListMenuItemsVendor extends React.Component {
       <Container id="profiles-page">
         <h1>Vendor Menu Page</h1>
         <Card.Group centered>
-          {_.map(vendorMenu, (menuItem, index) => <MenuItems key={index} menuItem={menuItem} />)}
+          {_.map(vendorMenu, (menuItem, index) => <Reviews key={index} review={review} />)}
         </Card.Group>
       </Container>
     );
@@ -35,8 +36,9 @@ class ListMenuItemsVendor extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-ListMenuItemsVendor.propTypes = {
+ListReviewsVendor.propTypes = {
   name: PropTypes.object,
+  review: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -46,8 +48,9 @@ export default withTracker(({ match }) => {
   // use the url to access the document in the collection of vendors
   const documentId = match.params._id;
   // console.log(documentId);
-  const subscription1 = Meteor.subscribe(MenuItem.userPublicationName);
+  const subscription1 = Meteor.subscribe(Review.userPublicationName);
   const subscription2 = Meteor.subscribe(Vendors.userPublicationName);
+
   const ready = subscription2.ready() && subscription1.ready();
   // pluck the name field from the document
   // const name = Vendors.collection.findOne(documentId);
@@ -58,4 +61,4 @@ export default withTracker(({ match }) => {
     name,
     ready,
   };
-})(ListMenuItemsVendor);
+})(ListReviewsVendor);

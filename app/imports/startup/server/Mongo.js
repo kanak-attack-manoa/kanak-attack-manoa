@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Vendors } from '../../api/vendor/Vendor';
 import { MenuItem } from '../../api/menuitem/MenuItem';
+import { Review } from '../../api/vendorreview/Review';
 
 // Initialize the database with a default data document.
 function addData(data) {
@@ -18,6 +19,11 @@ function addVendor(data) {
 function addItem(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   MenuItem.collection.insert(data);
+}
+
+function addReview(data) {
+  console.log(`  Adding: ${data.name} (${data.owner})`);
+  Review.collection.insert(data);
 }
 
 // Initialize the StuffsCollection if empty.
@@ -40,5 +46,12 @@ if (MenuItem.collection.find().count() === 0) {
   if (Meteor.settings.defaultItems) {
     console.log('Creating default data.');
     Meteor.settings.defaultItems.map(data => addItem(data));
+  }
+}
+
+if (Review.collection.find().count() === 0) {
+  if (Meteor.settings.defaultReviews) {
+    console.log('Creating default reviews.');
+    Meteor.settings.defaultReviews.map(data => addReview(data));
   }
 }

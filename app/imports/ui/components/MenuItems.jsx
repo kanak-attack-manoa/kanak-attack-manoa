@@ -19,6 +19,9 @@ class MenuItems extends React.Component {
           <Card.Description>
             {this.props.menuItem.ingredients}
           </Card.Description>
+          <Card.Content>
+            <Link id="edit-menu-item" to={`/edit/${this.props.menuItem._id}`}>Edit</Link>
+          </Card.Content>
         </Card.Content>
       </Card>
     );
