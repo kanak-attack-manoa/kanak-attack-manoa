@@ -1,16 +1,17 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import { Review } from '../../api/vendorreview/Review';
+import { Vendors } from '../../api/vendor/Vendor';
 
 const formSchema = new SimpleSchema({
   name: String,
-  vendorId: String,
   createdAt: Date,
   rating: {
     type: Number,
@@ -27,9 +28,9 @@ class AddReview extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { name, rating, vendorId, description, createdAt } = data;
+    const { name, rating, description, createdAt } = data;
     const owner = Meteor.user().username;
-    Review.collection.insert({ name, vendorId, createdAt, rating, description, owner },
+    Review.collection.insert({ name, createdAt, vendorId: this.props.vendor.name, rating, description, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -40,8 +41,12 @@ class AddReview extends React.Component {
       });
   }
 
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
+  renderPage() {
     let fRef = null;
     return (
       <Grid id="add-review" container centered>
@@ -52,7 +57,6 @@ class AddReview extends React.Component {
               <TextField id="name" name='name' placeholder='use a nickname'/>
               <SelectField name='rating'/>
               <TextField id="description" name='description'/>
-              <TextField id="vendorId" name='vendorId' placeholder='Panda Express'/>
               <HiddenField name='createdAt' value={new Date()}/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
@@ -64,18 +68,27 @@ class AddReview extends React.Component {
   }
 }
 
+AddReview.propTypes = {
+  vendor: PropTypes.object,
+  review: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
+};
+
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Review.userPublicationName);
+  const subscription1 = Meteor.subscribe(Review.userPublicationName);
+  const subscription2 = Meteor.subscribe(Vendors.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription1.ready() && subscription2.ready();
   // Get the document
-  const doc = Review.collection.findOne(documentId);
+  const review = Review.collection.findOne(documentId);
+  const vendor = Vendors.collection.findOne(documentId);
   return {
-    doc,
+    review,
+    vendor,
     ready,
   };
 })(AddReview);
