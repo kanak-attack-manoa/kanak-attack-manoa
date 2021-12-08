@@ -20,14 +20,14 @@ class ListReviewsVendor extends React.Component {
   // use a separate function to filter items through vendor?
   renderPage() {
     // const vendorMenu = menuByVendor(this.props.menuItem);
-    const vendorName = this.props.name.name;
+    const vendorName = this.props.vendor.name;
     // console.log(this.props.name.name);
-    const vendorReview = Review.collection.find({ review: vendorName }).fetch();
+    const vendorReview = Review.collection.find({ vendorId: vendorName }).fetch();
     return (
       <Container id="list-reviews">
-        <h1>Vendor Review Page</h1>
-        <Card.Group centered>
-          {_.map(vendorReview, (review, index) => <Reviews key={index} review={review} />)}
+        <h1>{this.props.vendor.name} Review Page</h1>
+        <Card.Group>
+          {_.map(vendorReview, (review, index) => <Reviews key={index} review={review} vendor={this.props.vendor} />)}
         </Card.Group>
       </Container>
     );
@@ -36,7 +36,7 @@ class ListReviewsVendor extends React.Component {
 
 // Require an array of Stuff documents in the props.
 ListReviewsVendor.propTypes = {
-  name: PropTypes.object,
+  vendor: PropTypes.object,
   review: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
@@ -49,15 +49,17 @@ export default withTracker(({ match }) => {
   // console.log(documentId);
   const subscription1 = Meteor.subscribe(Review.userPublicationName);
   const subscription2 = Meteor.subscribe(Vendors.userPublicationName);
+  console.log(documentId);
 
   const ready = subscription2.ready() && subscription1.ready();
   // pluck the name field from the document
   // const name = Vendors.collection.findOne(documentId);
   // console.log(Vendors.collection.findOne(documentId));
-  const name = Vendors.collection.findOne(documentId);
+  const vendor = Vendors.collection.findOne(documentId);
+  console.log(vendor);
   return {
     // menuItem: Review.collection.find({}).fetch(),
-    name,
+    vendor,
     ready,
   };
 })(ListReviewsVendor);

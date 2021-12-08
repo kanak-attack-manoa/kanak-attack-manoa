@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Vendors } from '../../api/vendor/Vendor';
 import { MenuItem } from '../../api/menuitem/MenuItem';
-import { Review } from '../../api/vendorreview/Review';
 
 // Initialize the database with a default data document.
 function addData(data) {

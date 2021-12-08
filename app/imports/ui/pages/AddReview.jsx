@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Review } from '../../api/vendorreview/Review';
 
 const formSchema = new SimpleSchema({
@@ -63,4 +64,18 @@ class AddReview extends React.Component {
   }
 }
 
-export default AddReview;
+// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+export default withTracker(({ match }) => {
+  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const documentId = match.params._id;
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe(Review.userPublicationName);
+  // Determine if the subscription is ready
+  const ready = subscription.ready();
+  // Get the document
+  const doc = Review.collection.findOne(documentId);
+  return {
+    doc,
+    ready,
+  };
+})(AddReview);

@@ -1,32 +1,30 @@
 import React from 'react';
-import { Comment, Icon } from 'semantic-ui-react';
+import { Card, Comment, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { HiddenField } from 'uniforms-semantic';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Reviews extends React.Component {
   render() {
     return (
-      <Comment>
-        <Comment.Content>
-          <Comment.Author>{this.props.review.name}</Comment.Author>
-          <Comment.Metadata>
+      <Card>
+        <Card.Content>
+          <Card.Header>{this.props.review.name}</Card.Header>
+          <Card.Meta>
             <div>
-              <div>{this.props.review.createdAt}</div>
+              <Icon name='star' />{this.props.review.rating} Stars
             </div>
-            <div>
-              <Icon name='star' />{this.props.review.rating} Faves
-            </div>
-          </Comment.Metadata>
-          <Comment.Text>
+          </Card.Meta>
+          <Card.Description>
             {this.props.review.description}
-          </Comment.Text>
-          <HiddenField name="vendorId">
-            {this.props.vendor._id}
-          </HiddenField>
-        </Comment.Content>
-      </Comment>
+          </Card.Description>
+          <Card.Content extra>
+            <div>
+              <div>{this.props.review.createdAt.toString()}</div>
+            </div>
+          </Card.Content>
+        </Card.Content>
+      </Card>
     );
   }
 }
@@ -34,7 +32,7 @@ class Reviews extends React.Component {
 // Require a document to be passed to this component.
 Reviews.propTypes = {
   review: PropTypes.object.isRequired,
-  vendor: PropTypes.string.isRequired,
+  vendor: PropTypes.object.isRequired,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
