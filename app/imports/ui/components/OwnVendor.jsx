@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Vendors } from '../../api/vendor/Vendor';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class Vendor extends React.Component {
+class OwnVendor extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -21,7 +21,7 @@ class Vendor extends React.Component {
         <Card.Content>
           <Image
             floated='right'
-            size='small'
+            size='medium'
             src={this.props.vendor.image}
           />
           <Card.Header>{this.props.vendor.name}</Card.Header>
@@ -30,7 +30,7 @@ class Vendor extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/list/${this.props.vendor._id}`}>Menu</Link>
+          <Link id="edit-vendor" to={`/edit-your-vendor/${this.props.vendor._id}`}>Edit</Link>
         </Card.Content>
       </Card>
     );
@@ -38,7 +38,7 @@ class Vendor extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-Vendor.propTypes = {
+OwnVendor.propTypes = {
   vendor: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -46,7 +46,7 @@ Vendor.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Vendors.userPublicationName);
+  const subscription = Meteor.subscribe(Vendors.adminPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
@@ -55,4 +55,4 @@ export default withTracker(() => {
     vendors,
     ready,
   };
-})(Vendor);
+})(OwnVendor);

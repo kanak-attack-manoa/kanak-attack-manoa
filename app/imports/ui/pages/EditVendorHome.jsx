@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Icon, Container } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -11,12 +11,13 @@ import { Vendors } from '../../api/vendor/Vendor';
 const bridge = new SimpleSchema2Bridge(Vendors.schema);
 
 /** Renders the Page for editing a single document. */
-class EditVendor extends React.Component {
+class EditVendorProfile extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { name, description, image, _id } = data;
-    Vendors.collection.update(_id, { $set: { name, description, image } }, (error) => (error ?
+    const { name, image, description, _id } = data;
+    const owner = Meteor.user().username;
+    Vendors.collection.update(_id, { $set: { name, image, description, owner } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -31,11 +32,11 @@ class EditVendor extends React.Component {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center" inverted>Edit Vendor</Header>
+          <Header as="h2" textAlign="center" inverted>Edit Your Vendor Profile</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
               <TextField name='name'/>
-              <TextField name='description'/>
+              <LongTextField name='description'/>
               <TextField name='image'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
@@ -49,7 +50,7 @@ class EditVendor extends React.Component {
 }
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
-EditVendor.propTypes = {
+EditVendorProfile.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -69,4 +70,4 @@ export default withTracker(({ match }) => {
     doc,
     ready,
   };
-})(EditVendor);
+})(EditVendorProfile);
