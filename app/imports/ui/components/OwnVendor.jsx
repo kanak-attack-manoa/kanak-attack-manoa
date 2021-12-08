@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader } from 'semantic-ui-react';
+import { Loader, Card, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Vendors } from '../../api/vendor/Vendor';
-import Vendor from '../components/Vendor';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListVendor extends React.Component {
+class OwnVendor extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -17,28 +17,36 @@ class ListVendor extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Container>
-        <Header as="h2" textAlign="center" inverted>Vendors</Header>
-        <Card.Group>
-          {this.props.vendors.map((vendor, index) => <Vendor
-            key={index}
-            vendor={vendor}/>)}
-        </Card.Group>
-      </Container>
+      <Card centered>
+        <Card.Content>
+          <Image
+            floated='right'
+            size='medium'
+            src={this.props.vendor.image}
+          />
+          <Card.Header>{this.props.vendor.name}</Card.Header>
+          <Card.Description>
+            {this.props.vendor.description}
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <Link id="edit-vendor" to={`/edit-your-vendor/${this.props.vendor._id}`}>Edit</Link>
+        </Card.Content>
+      </Card>
     );
   }
 }
 
 // Require an array of Stuff documents in the props.
-ListVendor.propTypes = {
-  vendors: PropTypes.array.isRequired,
+OwnVendor.propTypes = {
+  vendor: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Vendors.userPublicationName);
+  const subscription = Meteor.subscribe(Vendors.adminPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
@@ -47,4 +55,4 @@ export default withTracker(() => {
     vendors,
     ready,
   };
-})(ListVendor);
+})(OwnVendor);

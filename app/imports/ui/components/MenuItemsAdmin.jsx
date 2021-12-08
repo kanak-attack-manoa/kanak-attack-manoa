@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class MenuItems extends React.Component {
+class MenuItemsAdmin extends React.Component {
   render() {
     return (
       <Card>
@@ -20,15 +20,18 @@ class MenuItems extends React.Component {
             {this.props.menuItem.ingredients}
           </Card.Description>
         </Card.Content>
+        <Card.Content extra>
+          <Link id="edit-menu-item" to={`/edit/${this.props.menuItem._id}`}>Edit</Link>
+        </Card.Content>
       </Card>
     );
   }
 }
 
 // Require a document to be passed to this component.
-MenuItems.propTypes = {
+MenuItemsAdmin.propTypes = {
   menuItem: PropTypes.object.isRequired,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(MenuItems);
+export default withRouter(MenuItemsAdmin);

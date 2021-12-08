@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { MenuItem } from '../../api/menuitem/MenuItem';
 import { Vendors } from '../../api/vendor/Vendor';
+import { Review } from '../../api/vendorreview/Review';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -18,6 +19,13 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 // all users should be able to see all possible menu items in the database
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(MenuItem.userPublicationName, function () {
+  if (this.userId) {
+    return MenuItem.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(MenuItem.vendorPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     if (Roles.userIsInRole(this.userId, 'vendor')) {
@@ -38,15 +46,17 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 });
 
 Meteor.publish(MenuItem.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return MenuItem.collection.find();
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return MenuItem.collection.find({ owner: username });
   }
   return this.ready();
 });
 
 Meteor.publish(Vendors.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Vendors.collection.find();
+  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Vendors.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -75,6 +85,14 @@ Meteor.publish(Vendors.userPublicationName, function () {
   if (this.userId) {
     // const username = Meteor.users.findOne(this.userId).username;
     return Vendors.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Review.userPublicationName, function () {
+  if (this.userId) {
+    // const username = Meteor.users.findOne(this.userId).username;
+    return Review.collection.find();
   }
   return this.ready();
 });

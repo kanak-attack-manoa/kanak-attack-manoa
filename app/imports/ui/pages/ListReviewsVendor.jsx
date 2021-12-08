@@ -4,12 +4,12 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Card, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import MenuItems from '../components/MenuItems';
-import { MenuItem } from '../../api/menuitem/MenuItem';
+import Reviews from '../components/Reviews';
 import { Vendors } from '../../api/vendor/Vendor';
+import { Review } from '../../api/vendorreview/Review';
 
 /** Renders the Profile Collection as a set of Cards. */
-class ListMenuItemsVendor extends React.Component {
+class ListReviewsVendor extends React.Component {
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -20,14 +20,14 @@ class ListMenuItemsVendor extends React.Component {
   // use a separate function to filter items through vendor?
   renderPage() {
     // const vendorMenu = menuByVendor(this.props.menuItem);
-    const vendorName = this.props.name.name;
+    const vendorName = this.props.vendor.name;
     // console.log(this.props.name.name);
-    const vendorMenu = MenuItem.collection.find({ vendor: vendorName }).fetch();
+    const vendorReview = Review.collection.find({ vendorId: vendorName }).fetch();
     return (
-      <Container id="profiles-page">
-        <h1 style={{ color: 'white' }}>{this.props.name.name}</h1>
-        <Card.Group centered>
-          {_.map(vendorMenu, (menuItem, index) => <MenuItems key={index} menuItem={menuItem} />)}
+      <Container id="list-reviews">
+        <h1 style={{ color: 'white' }}>{this.props.vendor.name} Review Page</h1>
+        <Card.Group>
+          {_.map(vendorReview, (review, index) => <Reviews key={index} review={review} vendor={this.props.vendor} />)}
         </Card.Group>
       </Container>
     );
@@ -35,8 +35,9 @@ class ListMenuItemsVendor extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-ListMenuItemsVendor.propTypes = {
-  name: PropTypes.object,
+ListReviewsVendor.propTypes = {
+  vendor: PropTypes.object,
+  review: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -46,16 +47,19 @@ export default withTracker(({ match }) => {
   // use the url to access the document in the collection of vendors
   const documentId = match.params._id;
   // console.log(documentId);
-  const subscription1 = Meteor.subscribe(MenuItem.userPublicationName);
+  const subscription1 = Meteor.subscribe(Review.userPublicationName);
   const subscription2 = Meteor.subscribe(Vendors.userPublicationName);
+  console.log(documentId);
+
   const ready = subscription2.ready() && subscription1.ready();
   // pluck the name field from the document
   // const name = Vendors.collection.findOne(documentId);
   // console.log(Vendors.collection.findOne(documentId));
-  const name = Vendors.collection.findOne(documentId);
+  const vendor = Vendors.collection.findOne(documentId);
+  console.log(vendor);
   return {
     // menuItem: Review.collection.find({}).fetch(),
-    name,
+    vendor,
     ready,
   };
-})(ListMenuItemsVendor);
+})(ListReviewsVendor);
