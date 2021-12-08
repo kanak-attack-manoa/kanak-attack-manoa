@@ -21,7 +21,7 @@ class OwnVendor extends React.Component {
         <Card.Content>
           <Image
             floated='right'
-            size='small'
+            size='medium'
             src={this.props.vendor.image}
           />
           <Card.Header>{this.props.vendor.name}</Card.Header>

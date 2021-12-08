@@ -20,6 +20,7 @@ import ListMenuItemsVendor from '../pages/ListMenuItemsVendor';
 import EditVendor from '../pages/EditVendor';
 import ListVendorAdmin from '../pages/ListVendorAdmin';
 import VendorHome from '../pages/VendorHome';
+import ListMenuItemsVendors from '../pages/ListMenuItemsVendors';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -39,6 +40,7 @@ class App extends React.Component {
             <AdminProtectedRoute path="/admin" component={HomeAdmin}/>
             <AdminProtectedRoute path="/vendors-admin" component={ListVendorAdmin}/>
             <AdminProtectedRoute path="/edit-vendor/:_id" component={EditVendor}/>
+            <VendorProtectedRoute path ="/your-menu" component={ListMenuItemsVendors}/>
             <VendorProtectedRoute path="/edit-your-vendor/:_id" component={EditVendor}/>
             <VendorProtectedRoute path="/vendor-home" component={VendorHome}/>
             <VendorProtectedRoute path="/edit/:_id" component={EditMenuItem}/>

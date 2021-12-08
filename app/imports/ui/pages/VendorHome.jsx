@@ -42,27 +42,30 @@ class VendorHome extends React.Component {
     let fRef = null;
     return (
       <Container>
-        <Grid id='vendor-home' verticalAlign='middle' textAlign='center' container>
+        <Grid id='vendor-home' verticalAlign='middle' textAlign='center' container columns={3}>
 
-          <Grid.Column width={4}>
-            <Icon inverted size='massive' name='address book'/>
+          <Grid.Column width={2}>
+            <Icon inverted size='massive' name='utensils'/>
           </Grid.Column>
 
-          <Grid.Column width={8}>
-            <h1 style={ { padding: '10px 0px 0px 0px', color: 'white', fontSize: '30px' }}>Welcome vendor</h1>
-            <h4 style={{ color: 'white' }}>As administrator, you can handle user profiles and define users as having the vendor role</h4>
+          <Grid.Column width={3}>
+            <h1 style={ { padding: '10px 0px 0px 0px', color: 'white', fontSize: '30px' }}>Welcome to the Vendor Home Page</h1>
+            <h4 style={{ color: 'white' }}>On this page, you can view, add, and edit your vendor profile</h4>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Header as="h2" textAlign="center" inverted>Current Profile</Header>
+            <Card.Group>
+              {this.props.vendors.map((vendor, index) => <OwnVendor
+                key={index}
+                vendor={vendor}/>)}
+            </Card.Group>
           </Grid.Column>
 
         </Grid>
-        <Header as="h2" textAlign="center" inverted>Your Profile</Header>
-        <Card.Group>
-          {this.props.vendors.map((vendor, index) => <OwnVendor
-            key={index}
-            vendor={vendor}/>)}
-        </Card.Group>
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Create your Profile</Header>
+            <Header as="h2" textAlign="center" inverted>Create your Profile</Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
                 <TextField name='name'/>

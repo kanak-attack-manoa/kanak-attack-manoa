@@ -28,6 +28,17 @@ Meteor.publish(MenuItem.userPublicationName, function () {
   return this.ready();
 });
 
+Meteor.publish(MenuItem.vendorPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    if (Roles.userIsInRole(this.userId, 'vendor')) {
+      return MenuItem.collection.find({ owner: username });
+    }
+    return MenuItem.collection.find();
+  }
+  return this.ready();
+});
+
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise publish nothing.
 Meteor.publish(Stuffs.adminPublicationName, function () {
