@@ -30,7 +30,7 @@ class AddMenuItem extends React.Component {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          swal('Success', 'Menu Item added successfully', 'success');
           formRef.reset();
         }
       });
@@ -42,7 +42,7 @@ class AddMenuItem extends React.Component {
     return (
       <Grid id="add-menu-item" container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add Menu Item</Header>
+          <Header as="h2" textAlign="center" style={{ color: 'white' }}>Add Menu Item</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <TextField id="name" name='name'/>

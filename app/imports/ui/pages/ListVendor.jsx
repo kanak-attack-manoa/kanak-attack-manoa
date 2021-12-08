@@ -18,7 +18,7 @@ class ListVendor extends React.Component {
   renderPage() {
     return (
       <Container>
-        <Header as="h2" textAlign="center" inverted>List Vendors</Header>
+        <Header as="h2" textAlign="center" inverted>Vendors</Header>
         <Card.Group>
           {this.props.vendors.map((vendor, index) => <Vendor
             key={index}

@@ -18,7 +18,7 @@ class EditVendor extends React.Component {
     const { name, description, image, _id } = data;
     Vendors.collection.update(_id, { $set: { name, description, image } }, (error) => (error ?
       swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+      swal('Success', 'Vendor updated successfully', 'success')));
   }
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
