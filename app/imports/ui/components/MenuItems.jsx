@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class MenuItems extends React.Component {
@@ -19,6 +19,9 @@ class MenuItems extends React.Component {
           <Card.Description>
             {this.props.menuItem.ingredients}
           </Card.Description>
+          <Card.Content>
+            <Link id="edit-menu-item" to={`/edit/${this.props.menuItem._id}`}>Edit</Link>
+          </Card.Content>
         </Card.Content>
       </Card>
     );

@@ -18,9 +18,8 @@ import ListVendor from '../pages/ListVendor';
 import ListMenuItems from '../pages/ListMenuItems';
 import ListMenuItemsVendor from '../pages/ListMenuItemsVendor';
 import EditVendor from '../pages/EditVendor';
-import ListVendorAdmin from '../pages/ListVendorAdmin';
-import VendorHome from '../pages/VendorHome';
-import ListMenuItemsVendors from '../pages/ListMenuItemsVendors';
+import AddReview from '../pages/AddReview';
+import ListReviewsVendor from '../pages/ListReviewsVendor';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -34,17 +33,15 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
-            <ProtectedRoute path="/vendors" component={ListVendor}/>
+            <Route path="/vendors" component={ListVendor}/>
+            <Route path="/add-review/:_id" component={AddReview}/>
+            <Route path="/list-reviews/:_id" component={ListReviewsVendor}/>
             <ProtectedRoute path="/list/:_id" component={ListMenuItemsVendor}/>
             <ProtectedRoute path="/list" component={ListMenuItems}/>
-            <AdminProtectedRoute path="/admin" component={HomeAdmin}/>
-            <AdminProtectedRoute path="/vendors-admin" component={ListVendorAdmin}/>
             <AdminProtectedRoute path="/edit-vendor/:_id" component={EditVendor}/>
-            <VendorProtectedRoute path ="/your-menu" component={ListMenuItemsVendors}/>
-            <VendorProtectedRoute path="/edit-your-vendor/:_id" component={EditVendor}/>
-            <VendorProtectedRoute path="/vendor-home" component={VendorHome}/>
             <VendorProtectedRoute path="/edit/:_id" component={EditMenuItem}/>
             <VendorProtectedRoute path="/add" component={AddMenuItem}/>
+            <AdminProtectedRoute path="/admin" component={HomeAdmin}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
