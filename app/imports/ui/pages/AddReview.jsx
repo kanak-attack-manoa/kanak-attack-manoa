@@ -35,7 +35,7 @@ class AddReview extends React.Component {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          swal('Success', 'Review added successfully', 'success');
           formRef.reset();
         }
       });
@@ -51,7 +51,7 @@ class AddReview extends React.Component {
     return (
       <Grid id="add-review" container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add a review!</Header>
+          <Header as="h2" textAlign="center" style={{ color: 'white' }}>Add a review!</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <TextField id="name" name='name' placeholder='use a nickname'/>

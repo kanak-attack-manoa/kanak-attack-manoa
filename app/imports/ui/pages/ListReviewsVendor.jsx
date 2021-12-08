@@ -25,7 +25,7 @@ class ListReviewsVendor extends React.Component {
     const vendorReview = Review.collection.find({ vendorId: vendorName }).fetch();
     return (
       <Container id="list-reviews">
-        <h1>{this.props.vendor.name} Review Page</h1>
+        <h1 style={{ color: 'white' }}>{this.props.vendor.name} Review Page</h1>
         <Card.Group>
           {_.map(vendorReview, (review, index) => <Reviews key={index} review={review} vendor={this.props.vendor} />)}
         </Card.Group>
