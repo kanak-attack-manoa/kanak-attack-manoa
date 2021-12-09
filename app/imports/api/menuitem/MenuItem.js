@@ -16,7 +16,7 @@ class MenuItemCollection {
       name: String,
       image: String,
       vendor: String,
-      price: Number,
+      price: String,
       owner: String,
       ingredients: String,
     }, { tracker: Tracker });

@@ -37,7 +37,7 @@ class EditMenuItem extends React.Component {
               <TextField name='name'/>
               <TextField name='image'/>
               <TextField name='vendor'/>
-              <NumField name='price' decimal={true}/>
+              <TextField name='price'/>
               <TextField name='ingredients'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
