@@ -15,8 +15,8 @@ const makeSchema = (allIngredients) => new SimpleSchema({
   'ingredients.$': { type: String, allowedValues: allIngredients },
 });
 
-function getMenuItemData(email) {
-  const data = MenuItem.collection.findOne({ email });
+function getMenuItemData(name) {
+  const data = MenuItem.collection.findOne({ name });
   const ingredients = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'ingredients');
   const images = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'image');
   const prices = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'price');
