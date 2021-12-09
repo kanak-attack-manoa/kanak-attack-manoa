@@ -30,7 +30,7 @@ class Vendor extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/list/${this.props.vendor._id}`}>Menu</Link>
+          <Link id="vendor-menu" to={`/list/${this.props.vendor._id}`}>Menu</Link>
         </Card.Content>
         <Card.Content extra>
           <Link id="add-review" to={`/add-review/${this.props.vendor._id}`}>Tell them What You think!</Link>

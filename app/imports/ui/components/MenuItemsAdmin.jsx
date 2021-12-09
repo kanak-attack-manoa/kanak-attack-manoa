@@ -21,7 +21,7 @@ class MenuItemsAdmin extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link id="edit-menu-item" to={`/edit/${this.props.menuItem._id}`}>Edit</Link>
+          <Link id="edit-menu-item-vendor" to={`/edit/${this.props.menuItem._id}`}>Edit</Link>
         </Card.Content>
       </Card>
     );

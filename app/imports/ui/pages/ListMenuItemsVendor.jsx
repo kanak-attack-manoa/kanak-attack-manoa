@@ -24,7 +24,7 @@ class ListMenuItemsVendor extends React.Component {
     // console.log(this.props.name.name);
     const vendorMenu = MenuItem.collection.find({ vendor: vendorName }).fetch();
     return (
-      <Container id="profiles-page">
+      <Container id="vendor-menu">
         <h1 style={{ color: 'white' }}>{this.props.name.name}</h1>
         <Card.Group centered>
           {_.map(vendorMenu, (menuItem, index) => <MenuItems key={index} menuItem={menuItem} />)}

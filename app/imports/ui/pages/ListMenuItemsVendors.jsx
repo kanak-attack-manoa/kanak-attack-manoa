@@ -16,7 +16,7 @@ class ListMenuItemsVendors extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-      <Container id="list-menu-items">
+      <Container id="list-menu-items-vendor">
         <Card.Group centered>
           {this.props.menuItem.map((menuItem, index) => <MenuItemsAdmin
             key={index}
