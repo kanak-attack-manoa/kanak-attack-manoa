@@ -50,7 +50,7 @@ test('Test the Admin Home page and that the table has at least two cells', async
   await listVendorsAdmin.gotoEditVendor(testController);
 });
 
-test.only('Test the edit vendors page exists and edit a vendor', async (testController) => {
+test('Test the edit vendors page exists and edit a vendor', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
   await navBar.gotoListVendorsAdminPage(testController);
