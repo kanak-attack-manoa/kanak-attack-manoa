@@ -15,6 +15,7 @@ class MenuItemsAdmin extends React.Component {
             src={this.props.menuItem.image}
           />
           <Card.Header>{this.props.menuItem.name}</Card.Header>
+          <Card.Header>${this.props.menuItem.price}</Card.Header>
           <Card.Meta>{this.props.menuItem.vendor}</Card.Meta>
           <Card.Description>
             {this.props.menuItem.ingredients}
