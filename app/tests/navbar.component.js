@@ -53,9 +53,12 @@ class NavBar {
     await testController.click('#navbar-vendors');
   }
 
-  async gotoEditMenuItemPage(testController) {
-    await testController.click('#navbar-list-menu-items');
-    await testController.click('#edit-menu-item');
+  async gotoListVendorsAdminPage(testController) {
+    await testController.click('#navbar-admin-vendors');
+  }
+
+  async gotoListMenuItemsVendorsPage(testController) {
+    await testController.click('#navbar-list-menu-items-vendor');
   }
 }
 

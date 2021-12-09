@@ -11,7 +11,7 @@ class HomeAdmin extends React.Component {
   render() {
     return (
       <Container style={ { padding: '10px 0px 0px 0px' } } >
-        <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
+        <Grid id='admin-home' verticalAlign='middle' textAlign='center' container>
 
           <Grid.Column width={4}>
             <Icon inverted size='massive' name='address book'/>
