@@ -1,7 +1,5 @@
 import React from 'react';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Meteor } from 'meteor/meteor';
-import SimpleSchema from 'simpl-schema';
 import { Container, Loader, Card, Image, Label, Segment } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -9,19 +7,14 @@ import { _ } from 'meteor/underscore';
 import { AutoForm, SubmitField, TextField } from 'uniforms-semantic';
 import { MenuItem } from '../../api/menuitem/MenuItem';
 
-/** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allIngredients) => new SimpleSchema({
-  ingredients: { type: Array, label: 'Ingredients', optional: true },
-  'ingredients.$': { type: String, allowedValues: allIngredients },
-});
-
-function getMenuItemData(name) {
-  const data = MenuItem.collection.findOne({ name });
+function getMenuItemData(email) {
+  const data = MenuItem.collection.findOne({ email });
   const ingredients = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'ingredients');
   const images = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'image');
   const prices = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'price');
   const vendors = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'vendor');
-  return _.extend({ }, data, { ingredients, images, prices, vendors });
+  const names = _.pluck(MenuItem.collection.find({ menuItem: email }).fetch(), 'name');
+  return _.extend({ }, data, { ingredients, images, prices, vendors, names });
 }
 
 /** Component for layout out a Profile Card. */
@@ -50,15 +43,15 @@ MenuItems.propTypes = {
 };
 
 /** Renders the Profile Collection as a set of Cards. */
-class Filter extends React.Component {
+class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { ingredients: [] };
+    this.state = { prices: [] };
   }
 
   submit(data) {
-    this.setState({ ingredients: data.ingredients || [] });
+    this.setState({ prices: data.prices || [] });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -68,16 +61,13 @@ class Filter extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const allIngredients = _.pluck(MenuItem.collection.find().fetch(), 'name');
-    const formSchema = makeSchema(allIngredients);
-    const bridge = new SimpleSchema2Bridge(formSchema);
-    const emails = _.pluck(MenuItem.collection.find({ ingredients: { $in: this.state.ingredients } }).fetch(), 'menuItem');
+    const emails = _.pluck(MenuItem.collection.find({ prices: { $in: this.state.ingredients } }).fetch(), 'menuItem');
     const menuItemData = _.uniq(emails).map(email => getMenuItemData(email));
     return (
       <Container id="filter-page">
         <AutoForm schema={bridge} onSubmit={data => this.submit(data)} >
           <Segment>
-            <TextField id='ingredients' name='ingredients' showInlineError={true} placeholder={'Ingredients'}/>
+            <TextField id='prices' name='prices' showInlineError={true} placeholder={'Prices'}/>
             <SubmitField id='submit' value='Submit'/>
           </Segment>
         </AutoForm>
@@ -90,7 +80,7 @@ class Filter extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-Filter.propTypes = {
+Search.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
@@ -101,4 +91,4 @@ export default withTracker(() => {
   return {
     ready: sub1.ready(),
   };
-})(Filter);
+})(Search);
