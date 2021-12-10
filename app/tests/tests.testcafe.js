@@ -10,7 +10,7 @@ import { listVendorsAdmin } from './listvendorsadmin.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'john@foo.com', password: 'changeme' };
+const credentials = { username: 'user@foo.com', password: 'changeme' };
 const vendorCredentials = { username: 'panda@foo.com', password: 'changeme' };
 const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 
