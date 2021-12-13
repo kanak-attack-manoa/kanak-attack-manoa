@@ -11,6 +11,7 @@ class NavBar {
     }
   }
 
+  /** Goes to the SignIn page. */
   async gotoSigninPage(testController) {
     await this.ensureLogout(testController);
     await testController.click('#login-dropdown');
@@ -37,26 +38,32 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
+  /** Goes to the MenuItems page. */
   async gotoMenuItemsPage(testController) {
     await testController.click('#navbar-list-menu-items');
   }
 
+  /** Goes to the AddMenuItem page. */
   async gotoAddMenuItemPage(testController) {
     await testController.click('#navbar-add-menu-item');
   }
 
+  /** Goes to the AdminHome page. */
   async gotoAdminHomePage(testController) {
     await testController.click('#navbar-admin-home');
   }
 
+  /** Goes to the ListVendors page. */
   async gotoListVendorsPage(testController) {
     await testController.click('#navbar-vendors');
   }
 
+  /** Goes to the ListVendors to edit page. */
   async gotoListVendorsAdminPage(testController) {
     await testController.click('#navbar-admin-vendors');
   }
 
+  /** Goes to the ListMenuItems page specific to vendor for editing. */
   async gotoListMenuItemsVendorsPage(testController) {
     await testController.click('#navbar-list-menu-items-vendor');
   }

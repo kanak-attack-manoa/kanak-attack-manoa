@@ -18,7 +18,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/** Renders the Page for adding a document. */
+/** Renders the Page for adding a MenuItem. */
 class AddMenuItem extends React.Component {
 
   // On submit, insert the data.
@@ -49,7 +49,7 @@ class AddMenuItem extends React.Component {
               <TextField id="image" name='image'/>
               <TextField id="vendor" name='vendor'/>
               <NumField id="price" name='price'/>
-              <TextField id="ingredients" name='ingredients' placeholder='tomato, lettuce, onion, beef, beets, brains'></TextField>
+              <TextField id="ingredients" name='ingredients' placeholder='tomato, lettuce, onion, beef, beets, brains'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
             </Segment>

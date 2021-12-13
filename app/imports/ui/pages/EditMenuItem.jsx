@@ -10,7 +10,7 @@ import { MenuItem } from '../../api/menuitem/MenuItem';
 
 const bridge = new SimpleSchema2Bridge(MenuItem.schema);
 
-/** Renders the Page for editing a single document. */
+/** Renders the Page for editing a single MenuItem. */
 class EditMenuItem extends React.Component {
 
   // On successful submit, insert the data.
@@ -50,7 +50,7 @@ class EditMenuItem extends React.Component {
   }
 }
 
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+// Require the presence of a MenuItem document in the props object. Uniforms adds 'model' to the props, which we use.
 EditMenuItem.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
@@ -61,11 +61,11 @@ EditMenuItem.propTypes = {
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
-  // Get access to Stuff documents.
+  // Get access to Menu documents.
   const subscription = Meteor.subscribe(MenuItem.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the document
+  // Get the MenuItem
   const doc = MenuItem.collection.findOne(documentId);
   return {
     doc,

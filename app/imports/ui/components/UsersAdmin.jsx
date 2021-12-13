@@ -4,7 +4,7 @@ import { Table, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 
-/** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
+/** Renders a single row in the list users associated with admin home page. See pages/HomeAdmin.jsx. */
 class UsersAdmin extends React.Component {
   render() {
     return (

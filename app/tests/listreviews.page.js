@@ -11,6 +11,7 @@ class ListReviewsPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
+  /** Checks the created review is listed. */
   async hasDefaultItems(testController) {
     const cardCount = Selector('.ui .card').count;
     await testController.expect(cardCount).gte(1);

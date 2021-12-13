@@ -11,13 +11,13 @@ class EditVendorPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  /** Checks this page is displayed, then adds a new project */
+  /** Checks this page is displayed, then edits a vendor */
   async editVendor(testController) {
     const name = `Test${new Date().getTime()}`;
     const image = 'https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_big.jpg';
     const description = 'Testing';
     await this.isDisplayed(testController);
-    // Define the new project
+    // Define the edited vendor
     await testController.typeText('#name', name);
     await testController.typeText('#image', image);
     await testController.typeText('#description', description);

@@ -11,10 +11,12 @@ class ListMenuItemsVendorsPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
+  /** Goes to the EditMenuItem page. */
   async gotoEditMenuItemPage(testController) {
     await testController.click('#edit-menu-item-vendor');
   }
 
+  /** Checks at least two menuItems are listed. */
   async hasDefaultItems(testController) {
     const cardCount = Selector('.ui .card').count;
     await testController.expect(cardCount).gte(2);

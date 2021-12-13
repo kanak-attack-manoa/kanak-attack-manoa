@@ -8,7 +8,7 @@ import Reviews from '../components/Reviews';
 import { Vendors } from '../../api/vendor/Vendor';
 import { Review } from '../../api/vendorreview/Review';
 
-/** Renders the Profile Collection as a set of Cards. */
+/** Renders the Reviews Collection as a set of cards specific to vendor. */
 class ListReviewsVendor extends React.Component {
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -16,12 +16,8 @@ class ListReviewsVendor extends React.Component {
   }
 
   /** Render the page once subscriptions have been received. */
-  // Find some way to render Menu Items based on vendor?
-  // use a separate function to filter items through vendor?
   renderPage() {
-    // const vendorMenu = menuByVendor(this.props.menuItem);
     const vendorName = this.props.vendor.name;
-    // console.log(this.props.name.name);
     const vendorReview = Review.collection.find({ vendorId: vendorName }).fetch();
     return (
       <Container id="list-reviews">
@@ -34,7 +30,7 @@ class ListReviewsVendor extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
+// Require an array of Vendor and Review documents in the props.
 ListReviewsVendor.propTypes = {
   vendor: PropTypes.object,
   review: PropTypes.object,
@@ -43,7 +39,7 @@ ListReviewsVendor.propTypes = {
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ match }) => {
-  // Get access to Stuff documents.
+  // Get access to review/vendor documents.
   // use the url to access the document in the collection of vendors
   const documentId = match.params._id;
   // console.log(documentId);
@@ -52,13 +48,9 @@ export default withTracker(({ match }) => {
   console.log(documentId);
 
   const ready = subscription2.ready() && subscription1.ready();
-  // pluck the name field from the document
-  // const name = Vendors.collection.findOne(documentId);
-  // console.log(Vendors.collection.findOne(documentId));
   const vendor = Vendors.collection.findOne(documentId);
   console.log(vendor);
   return {
-    // menuItem: Review.collection.find({}).fetch(),
     vendor,
     ready,
   };

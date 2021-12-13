@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Vendors } from '../../api/vendor/Vendor';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a profile card associated with the vendor. Use <OwnVendor> to render a vendor profile card. */
 class OwnVendor extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
