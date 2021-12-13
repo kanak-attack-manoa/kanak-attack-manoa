@@ -11,6 +11,7 @@ class ListMenuItemsPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
+  /** Checks at least 2 menuItems are displayed. */
   async hasDefaultItems(testController) {
     const cardCount = Selector('.ui .card').count;
     await testController.expect(cardCount).gte(2);

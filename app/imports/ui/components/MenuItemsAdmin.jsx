@@ -3,7 +3,7 @@ import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a MenuItem with a link so correct roles may edit. See pages/ListMenuItemsVendors.jsx. */
 class MenuItemsAdmin extends React.Component {
   render() {
     return (

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import MenuItems from '../components/MenuItems';
 import { MenuItem } from '../../api/menuitem/MenuItem';
 
-/** Renders the Profile Collection as a set of Cards. */
+/** Renders the MenuItems Collection as a set of Cards. Use <MenuItems> to render a card */
 class ListMenuItems extends React.Component {
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -27,7 +27,7 @@ class ListMenuItems extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
+// Require an array of MenuItems documents in the props.
 ListMenuItems.propTypes = {
   menuItem: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
@@ -35,7 +35,7 @@ ListMenuItems.propTypes = {
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to MenuItem documents.
   const subscription = Meteor.subscribe(MenuItem.userPublicationName);
   return {
     menuItem: MenuItem.collection.find({}).fetch(),

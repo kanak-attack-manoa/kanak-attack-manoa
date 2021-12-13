@@ -10,7 +10,7 @@ import { Vendors } from '../../api/vendor/Vendor';
 
 const bridge = new SimpleSchema2Bridge(Vendors.schema);
 
-/** Renders the Page for editing a single document. */
+/** Renders the Page for editing a single vendor home page. */
 class EditVendorProfile extends React.Component {
 
   // On successful submit, insert the data.
@@ -49,7 +49,7 @@ class EditVendorProfile extends React.Component {
   }
 }
 
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+// Require the presence of a Vendor document in the props object. Uniforms adds 'model' to the props, which we use.
 EditVendorProfile.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
@@ -60,11 +60,11 @@ EditVendorProfile.propTypes = {
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
-  // Get access to Stuff documents.
+  // Get access to Vendors documents.
   const subscription = Meteor.subscribe(Vendors.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the document
+  // Get the vendor
   const doc = Vendors.collection.findOne(documentId);
   return {
     doc,

@@ -3,7 +3,7 @@ import { Card, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single card representing a user review of an associated vendor. See pages/ListReviews.jsx. */
 class Reviews extends React.Component {
   render() {
     return (
@@ -29,7 +29,7 @@ class Reviews extends React.Component {
   }
 }
 
-// Require a document to be passed to this component.
+// Vendor is needed to link the reviews to a specific vendor.
 Reviews.propTypes = {
   review: PropTypes.object.isRequired,
   vendor: PropTypes.object.isRequired,

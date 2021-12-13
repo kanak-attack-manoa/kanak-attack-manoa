@@ -11,7 +11,7 @@ class EditMenuItemPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  /** Checks this page is displayed, then adds a new project */
+  /** Checks this page is displayed, then edits a menuItem */
   async editMenuItem(testController) {
     const name = `Cheesy Beef-${new Date().getTime()}`;
     const picture = 'https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_big.jpg';
@@ -19,7 +19,7 @@ class EditMenuItemPage {
     const price = 5;
     const vendor = 'Sam Choy Kitchen';
     await this.isDisplayed(testController);
-    // Define the new project
+    // Define the edited menuItem
     await testController.typeText('#name', name);
     await testController.typeText('#image', picture);
     await testController.typeText('#price', price);

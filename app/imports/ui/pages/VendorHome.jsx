@@ -19,7 +19,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/** Renders the Page for adding a document. */
+/** Renders the Page for adding a vendor profile. */
 class VendorHome extends React.Component {
 
   // On submit, insert the data.
@@ -82,7 +82,7 @@ class VendorHome extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
+// Require an array of Vendors documents in the props.
 VendorHome.propTypes = {
   vendors: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
@@ -90,11 +90,11 @@ VendorHome.propTypes = {
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Vendors documents.
   const subscription = Meteor.subscribe(Vendors.adminPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
+  // Get the Vendor documents
   const vendors = Vendors.collection.find({}).fetch();
   return {
     vendors,

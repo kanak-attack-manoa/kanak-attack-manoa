@@ -11,6 +11,7 @@ class ListVendorMenuPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
+  /** Checks at least two vendor specific menuItems are listed. */
   async hasDefaultItems(testController) {
     const cardCount = Selector('.ui .card').count;
     await testController.expect(cardCount).gte(2);
