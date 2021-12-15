@@ -5,13 +5,13 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import UsersAdmin from '../components/UsersAdmin';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a table containing all of the user documents. Use <UsersAdmin> to render each row. */
 class HomeAdmin extends React.Component {
   // Render the page once subscriptions have been received.
   render() {
     return (
       <Container style={ { padding: '10px 0px 0px 0px' } } >
-        <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
+        <Grid id='admin-home' verticalAlign='middle' textAlign='center' container>
 
           <Grid.Column width={4}>
             <Icon inverted size='massive' name='address book'/>

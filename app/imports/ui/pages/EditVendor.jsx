@@ -10,7 +10,7 @@ import { Vendors } from '../../api/vendor/Vendor';
 
 const bridge = new SimpleSchema2Bridge(Vendors.schema);
 
-/** Renders the Page for editing a single document. */
+/** Renders the Page for editing a single vendor. */
 class EditVendor extends React.Component {
 
   // On successful submit, insert the data.
@@ -29,7 +29,7 @@ class EditVendor extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
     return (
-      <Grid container centered>
+      <Grid id="edit-vendor" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center" inverted>Edit Vendor</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
@@ -48,7 +48,7 @@ class EditVendor extends React.Component {
   }
 }
 
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+// Require the presence of a Vendor document in the props object. Uniforms adds 'model' to the props, which we use.
 EditVendor.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
@@ -59,11 +59,11 @@ EditVendor.propTypes = {
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
-  // Get access to Stuff documents.
+  // Get access to Vendors documents.
   const subscription = Meteor.subscribe(Vendors.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the document
+  // Get the vendor
   const doc = Vendors.collection.findOne(documentId);
   return {
     doc,

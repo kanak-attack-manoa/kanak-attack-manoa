@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class ListMenuItemsPage {
+class ListReviewsPage {
   constructor() {
-    this.pageId = '#list-menu-items';
+    this.pageId = '#list-reviews';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -11,11 +11,11 @@ class ListMenuItemsPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  /** Checks at least 2 menuItems are displayed. */
+  /** Checks the created review is listed. */
   async hasDefaultItems(testController) {
     const cardCount = Selector('.ui .card').count;
-    await testController.expect(cardCount).gte(2);
+    await testController.expect(cardCount).gte(1);
   }
 }
 
-export const listMenuItems = new ListMenuItemsPage();
+export const listReviews = new ListReviewsPage();

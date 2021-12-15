@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ import { MenuItem } from '../../api/menuitem/MenuItem';
 
 const bridge = new SimpleSchema2Bridge(MenuItem.schema);
 
-/** Renders the Page for editing a single document. */
+/** Renders the Page for editing a single MenuItem. */
 class EditMenuItem extends React.Component {
 
   // On successful submit, insert the data.
@@ -37,7 +37,7 @@ class EditMenuItem extends React.Component {
               <TextField name='name'/>
               <TextField name='image'/>
               <TextField name='vendor'/>
-              <NumField name='price' decimal={true}/>
+              <TextField name='price'/>
               <TextField name='ingredients'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
@@ -50,7 +50,7 @@ class EditMenuItem extends React.Component {
   }
 }
 
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+// Require the presence of a MenuItem document in the props object. Uniforms adds 'model' to the props, which we use.
 EditMenuItem.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
@@ -61,11 +61,11 @@ EditMenuItem.propTypes = {
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
-  // Get access to Stuff documents.
+  // Get access to Menu documents.
   const subscription = Meteor.subscribe(MenuItem.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the document
+  // Get the MenuItem
   const doc = MenuItem.collection.findOne(documentId);
   return {
     doc,

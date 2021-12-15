@@ -23,7 +23,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/** Renders the Page for adding a document. */
+/** Renders the Page for adding a vendor review. */
 class AddReview extends React.Component {
 
   // On submit, insert the data.
@@ -68,6 +68,7 @@ class AddReview extends React.Component {
   }
 }
 
+// vendor and review so the two can be connected
 AddReview.propTypes = {
   vendor: PropTypes.object,
   review: PropTypes.object,
@@ -78,8 +79,9 @@ AddReview.propTypes = {
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
-  // Get access to Stuff documents.
+  // Get access to Review documents.
   const subscription1 = Meteor.subscribe(Review.userPublicationName);
+  // Get access to Review documents.
   const subscription2 = Meteor.subscribe(Vendors.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription1.ready() && subscription2.ready();

@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class ListMenuItemsPage {
+class ListMenuItemsVendorsPage {
   constructor() {
-    this.pageId = '#list-menu-items';
+    this.pageId = '#list-menu-items-vendor';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -11,11 +11,16 @@ class ListMenuItemsPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  /** Checks at least 2 menuItems are displayed. */
+  /** Goes to the EditMenuItem page. */
+  async gotoEditMenuItemPage(testController) {
+    await testController.click('#edit-menu-item-vendor');
+  }
+
+  /** Checks at least two menuItems are listed. */
   async hasDefaultItems(testController) {
     const cardCount = Selector('.ui .card').count;
     await testController.expect(cardCount).gte(2);
   }
 }
 
-export const listMenuItems = new ListMenuItemsPage();
+export const listMenuItemsVendors = new ListMenuItemsVendorsPage();
