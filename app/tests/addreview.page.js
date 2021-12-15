@@ -13,18 +13,13 @@ class AddReviewPage {
 
   /** Checks this page is displayed, then adds a new review */
   async addReview(testController) {
-    const name = `Chuck Norris-${new Date().getTime()}`;
-    const createdAt = `${new Date().getTime()}`;
-    const rating = 5;
+    const name = 'Chuck Norris';
     const description = 'I been roundhousing fools since early this a.m.... these grinds really broke da mouth!!!';
     await this.isDisplayed(testController);
     // Define the new Review
     await testController.typeText('#name', name);
-    await testController.typeText('#createdAt', createdAt);
-    await testController.typeText('#rating', rating);
     await testController.typeText('#description', description);
-
-    await testController.click('#submit');
+    await testController.click('#add-review-submit');
     await testController.click(Selector('.swal-button--confirm'));
   }
 }

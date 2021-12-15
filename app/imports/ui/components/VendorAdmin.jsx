@@ -17,7 +17,7 @@ class VendorAdmin extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Card centered>
+      <Card id="vendor-admin" centered>
         <Card.Content>
           <Image
             floated='right'

@@ -13,7 +13,7 @@ class AddMenuItemPage {
 
   /** Checks this page is displayed, then adds a new MenuItem */
   async addMenuItem(testController) {
-    const name = `Beefy cheese-${new Date().getTime()}`;
+    const name = 'Beefy Cheese';
     const picture = 'https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_big.jpg';
     const ingredients = 'Beef, Cheese, Fish Sauce';
     const price = 4;

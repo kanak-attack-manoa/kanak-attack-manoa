@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 class Reviews extends React.Component {
   render() {
     return (
-      <Card>
+      <Card id="vendor-review">
         <Card.Content>
           <Card.Header>{this.props.review.name}</Card.Header>
           <Card.Meta>
