@@ -63,15 +63,15 @@ class VendorHome extends React.Component {
           </Grid.Column>
 
         </Grid>
-        <Grid container centered>
+        <Grid id="vendor-profile" container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center" inverted>Create your Profile</Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
-                <TextField name='name'/>
-                <LongTextField name='description'/>
-                <TextField name='image'/>
-                <SubmitField value='Submit'/>
+                <TextField id="vendor-profile-name" name='name'/>
+                <LongTextField id="vendor-profile-description" name='description'/>
+                <TextField id="vendor-profile-image" name='image'/>
+                <SubmitField id="vendor-profile-submit" value='Submit'/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>

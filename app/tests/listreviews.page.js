@@ -13,8 +13,12 @@ class ListReviewsPage {
 
   /** Checks the created review is listed. */
   async hasDefaultItems(testController) {
-    const cardCount = Selector('.ui .card').count;
+    const cardCount = Selector('#vendor-review').count;
     await testController.expect(cardCount).gte(1);
+  }
+
+  async listVendorReviews(testController) {
+    await testController.click('#list-reviews');
   }
 }
 

@@ -15,6 +15,15 @@ class ListVendorsAdminPage {
   async gotoEditVendor(testController) {
     await testController.click('#edit-vendor');
   }
+
+  async gotoListVendorMenu(testController) {
+    await testController.click('#edit-vendor');
+  }
+
+  async hasVendors(testController) {
+    const cardCount = Selector('#vendor-admin').count;
+    await testController.expect(cardCount).gte(2);
+  }
 }
 
 export const listVendorsAdmin = new ListVendorsAdminPage();

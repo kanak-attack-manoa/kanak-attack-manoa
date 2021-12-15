@@ -17,7 +17,7 @@ class Vendor extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Card centered>
+      <Card id="vendor-card" centered>
         <Card.Content>
           <Image
             floated='right'

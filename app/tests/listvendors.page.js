@@ -13,7 +13,7 @@ class ListVendorsPage {
 
   /** Checks at least 2 vendors are listed. */
   async hasDefaultVendors(testController) {
-    const cardCount = Selector('.ui .card').count;
+    const cardCount = Selector('#vendor-card').count;
     await testController.expect(cardCount).gte(2);
   }
 

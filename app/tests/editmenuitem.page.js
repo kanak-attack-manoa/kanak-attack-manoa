@@ -13,7 +13,7 @@ class EditMenuItemPage {
 
   /** Checks this page is displayed, then edits a menuItem */
   async editMenuItem(testController) {
-    const name = `Cheesy Beef-${new Date().getTime()}`;
+    const name = 'Cheesy Beef';
     const picture = 'https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_big.jpg';
     const ingredients = 'Cheese, Beef, Fish Sauce';
     const price = 5;

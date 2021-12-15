@@ -13,7 +13,7 @@ class ListMenuItemsPage {
 
   /** Checks at least 2 menuItems are displayed. */
   async hasDefaultItems(testController) {
-    const cardCount = Selector('.ui .card').count;
+    const cardCount = Selector('#menu-item').count;
     await testController.expect(cardCount).gte(2);
   }
 }
