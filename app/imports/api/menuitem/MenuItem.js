@@ -31,6 +31,6 @@ class MenuItemCollection {
 
 /**
  * The singleton instance of the MenuItemCollection.
- * @type {MenuItemCollection}
+ * @type {StuffsCollection}
  */
 export const MenuItem = new MenuItemCollection();
