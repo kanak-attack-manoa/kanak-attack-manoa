@@ -57,8 +57,8 @@ class AddReview extends React.Component {
               <TextField id="name" name='name' placeholder='use a nickname'/>
               <SelectField name='rating'/>
               <TextField id="description" name='description'/>
-              <HiddenField name='createdAt' value={new Date()}/>
-              <SubmitField value='Submit'/>
+              <HiddenField id="createdAt" name='createdAt' value={new Date()}/>
+              <SubmitField id="add-review-submit" value='Submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

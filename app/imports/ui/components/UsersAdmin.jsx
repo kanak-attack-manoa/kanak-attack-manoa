@@ -8,11 +8,11 @@ import swal from 'sweetalert';
 class UsersAdmin extends React.Component {
   render() {
     return (
-      <Table.Row>
+      <Table.Row id="user-row">
         <Table.Cell>{this.props.user.username}</Table.Cell>
         <Table.Cell>{this.props.user._id}</Table.Cell>
         <Table.Cell>
-          <Button icon onClick={ () => {
+          <Button icon id="make-vendor" onClick={ () => {
             Meteor.call('addUserRoleVendor', this.props.user._id, (error) => {
               if (error) {
                 swal('Error', error.message, 'error');

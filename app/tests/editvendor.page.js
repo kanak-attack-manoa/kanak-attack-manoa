@@ -13,7 +13,7 @@ class EditVendorPage {
 
   /** Checks this page is displayed, then edits a vendor */
   async editVendor(testController) {
-    const name = `Test${new Date().getTime()}`;
+    const name = 'Test Edit Vendor';
     const image = 'https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_big.jpg';
     const description = 'Testing';
     await this.isDisplayed(testController);

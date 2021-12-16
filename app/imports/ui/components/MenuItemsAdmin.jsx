@@ -7,7 +7,7 @@ import { withRouter, Link } from 'react-router-dom';
 class MenuItemsAdmin extends React.Component {
   render() {
     return (
-      <Card>
+      <Card id="menu-item-admin">
         <Card.Content>
           <Image
             floated='right'
