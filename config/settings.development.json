@@ -16,16 +16,10 @@
     { "email": "holohologrill@foo.com", "password": "changeme", "role": "vendor" }
   ],
 
-  "defaultData": [
-    { "name": "John", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "L&L Hawaiian Barbecue", "quantity": 2, "owner": "admin@foo.com", "condition": "poor" },
-    { "name": "Panda Express", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
   "defaultVendors": [
     { "name": "L&L Hawaiian Barbecue", "description": "Delicious local and Asian-American fusion cuisine served in big portions at reasonable prices! Try delicious L&L favorites like the Hawaiian Barbecue beef, chicken, or short ribs! Enjoy L&L’s famous fried chicken katsu, the best in town! Grab-and-go, breakfast items anparty packs for groups also available.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_big.jpg", "owner": "l&l@foo.com@foo.com" },
     { "name": "Panda Express", "description": "Panda Express serves gourmet Chinese food made with only the freshest ingredients. Famous for its Orange Chicken, they also offer a number of Wok Smart entrées that contain less than 250 calories per serving, such as Shanghai Angus Steak, Kung Pao Chicken, and Broccoli Beef. Other favorites include Beijing Beef, Sweetfire Chicken Breast, and Honey Walnut Shrimp.", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/panda_big2.jpg", "owner": "panda@foo.com" },
-    { "name": "DaSpot", "description": "Da Spot Health Foods & Juices offers diverse, healthy and affordable cuisine with a unique take on tasty dishes from around the world. Da Spot specializes in Mediterranean and North African food with vegan and specialty meat options that can be certified halal or kosher. Offering imaginative cuisine in exotic styles of Egyptian, Greek, French, Italian, Indian, Thai, Malaysian, Ethiopian, American, Hawaiian, Japanese, Chinese, Korean, Pacific Rim and fusion cooking.\n\nDa Spot’s menu also features over 15 combinations of different fruit smoothies. In sizes ranging from Small(16oz) Medium(20oz) Large(32oz)", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/daspot_big.jpg", "owner": "daspot@foo.com" }
+    { "name": "Da Spot", "description": "Da Spot Health Foods & Juices offers diverse, healthy and affordable cuisine with a unique take on tasty dishes from around the world. Da Spot specializes in Mediterranean and North African food with vegan and specialty meat options that can be certified halal or kosher. Offering imaginative cuisine in exotic styles of Egyptian, Greek, French, Italian, Indian, Thai, Malaysian, Ethiopian, American, Hawaiian, Japanese, Chinese, Korean, Pacific Rim and fusion cooking.\n\nDa Spot’s menu also features over 15 combinations of different fruit smoothies. In sizes ranging from Small(16oz) Medium(20oz) Large(32oz)", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/daspot_big.jpg", "owner": "daspot@foo.com" }
 ],
   "defaultItems": [
     { "name": "Butter Chicken", "image": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/07/lasoon3.jpg", "vendor": "Lasoon", "price": "8.50", "ingredients": "Chicken", "owner": "lasoon@foo.com" },
